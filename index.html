@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>2026 日历日程表 · Calendar & Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Caveat:wght@500;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&family=ZCOOL+KuaiLe&family=Long+Cang&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:oklch(98.5% 0.012 85);--paper:oklch(99.5% 0.006 85);--paper-2:oklch(96.5% 0.018 85);
+--ink:oklch(28% 0.04 60);--ink-2:oklch(45% 0.03 60);--ink-3:oklch(62% 0.025 60);
+--line:oklch(88% 0.018 80);--line-2:oklch(94% 0.012 80);
+--sun:oklch(60% 0.18 25);--accent:oklch(72% 0.14 60);
+--m1:oklch(92% 0.09 95);--m2:oklch(92% 0.07 15);--m3:oklch(92% 0.09 145);--m4:oklch(92% 0.08 175);
+--m5:oklch(92% 0.08 230);--m6:oklch(92% 0.08 290);--m7:oklch(92% 0.09 60);--m8:oklch(92% 0.08 350);
+--m9:oklch(92% 0.09 110);--m10:oklch(92% 0.09 40);--m11:oklch(92% 0.07 320);--m12:oklch(92% 0.07 195);
+--m1d:oklch(72% 0.16 80);--m2d:oklch(74% 0.14 15);--m3d:oklch(70% 0.16 145);--m4d:oklch(70% 0.13 175);
+--m5d:oklch(70% 0.13 230);--m6d:oklch(70% 0.13 290);--m7d:oklch(74% 0.15 60);--m8d:oklch(72% 0.13 350);
+--m9d:oklch(72% 0.16 110);--m10d:oklch(72% 0.16 40);--m11d:oklch(70% 0.13 320);--m12d:oklch(70% 0.12 195);
+--radius:14px;--radius-sm:10px;
+--shadow-1:0 1px 0 rgba(255,255,255,.7) inset,0 6px 22px -8px rgba(80,60,40,.14),0 2px 4px rgba(80,60,40,.06);
+--shadow-2:0 1px 0 rgba(255,255,255,.7) inset,0 18px 50px -16px rgba(80,60,40,.22),0 4px 10px rgba(80,60,40,.08);
+--shadow-stick:2px 4px 0 rgba(80,60,40,.08);
+--f-ui:'Quicksand','ZCOOL KuaiLe',ui-rounded,ui-sans-serif,system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+--f-display:'Fredoka','ZCOOL KuaiLe','Quicksand',ui-rounded,sans-serif;
+--f-hand:'Caveat','Long Cang',cursive;--f-mono:'JetBrains Mono',ui-monospace,monospace;
+--f-app:var(--f-ui);
+}
+html[data-font="rounded"]{--f-app:'Quicksand','ZCOOL KuaiLe',ui-rounded,sans-serif}
+html[data-font="hand"]{--f-app:'Caveat','Long Cang','Quicksand',cursive}
+html[data-font="sans"]{--f-app:'Nunito','PingFang SC','Microsoft YaHei',sans-serif}
+html[data-theme="dark"]{
+--bg:oklch(22% 0.018 280);--paper:oklch(28% 0.022 280);--paper-2:oklch(32% 0.025 280);
+--ink:oklch(94% 0.01 80);--ink-2:oklch(78% 0.015 80);--ink-3:oklch(60% 0.02 80);
+--line:oklch(38% 0.02 280);--line-2:oklch(34% 0.02 280);--sun:oklch(72% 0.16 20);
+--shadow-1:0 1px 0 rgba(255,255,255,.05) inset,0 8px 24px -8px rgba(0,0,0,.55);
+--shadow-2:0 1px 0 rgba(255,255,255,.05) inset,0 22px 60px -16px rgba(0,0,0,.65);
+--shadow-stick:2px 4px 0 rgba(0,0,0,.35);
+--m1:oklch(40% 0.08 95);--m2:oklch(40% 0.08 15);--m3:oklch(40% 0.08 145);--m4:oklch(40% 0.07 175);
+--m5:oklch(40% 0.08 230);--m6:oklch(40% 0.08 290);--m7:oklch(42% 0.09 60);--m8:oklch(40% 0.08 350);
+--m9:oklch(40% 0.08 110);--m10:oklch(42% 0.10 40);--m11:oklch(40% 0.08 320);--m12:oklch(40% 0.07 195);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--f-app);-webkit-font-smoothing:antialiased}
+body{min-height:100vh;overflow-x:hidden}
+button{font:inherit;color:inherit}
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:14px;padding:14px 24px;background:color-mix(in oklab,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:.5px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-size:18px}
+.brand .dot{width:26px;height:26px;border-radius:8px;background:conic-gradient(from 200deg,var(--m1),var(--m4),var(--m6),var(--m8),var(--m10),var(--m1));box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);position:relative}
+.brand .dot::after{content:"";position:absolute;inset:6px;background:var(--paper);border-radius:50%}
+.brand small{font-family:var(--f-hand);font-size:18px;color:var(--ink-3);font-weight:500;margin-left:4px}
+.tabs{display:flex;gap:4px;background:var(--paper);padding:4px;border-radius:12px;border:.5px solid var(--line)}
+.tab{appearance:none;border:0;background:transparent;padding:7px 16px;border-radius:9px;font-weight:600;color:var(--ink-2);cursor:default;display:flex;align-items:center;gap:7px}
+.tab.is-active{background:var(--ink);color:var(--paper);box-shadow:var(--shadow-1)}.tab svg{width:14px;height:14px}
+.topbar .grow{flex:1}
+.iconbtn{appearance:none;border:.5px solid var(--line);background:var(--paper);width:36px;height:36px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;cursor:default;color:var(--ink-2)}
+.iconbtn:hover{background:var(--paper-2);color:var(--ink)}.iconbtn svg{width:16px;height:16px}
+.monthstrip{display:flex;gap:6px;overflow-x:auto;padding:14px 24px 0;scrollbar-width:none}
+.monthstrip::-webkit-scrollbar{display:none}
+.pill{appearance:none;border:.5px solid var(--line);background:var(--paper);padding:7px 14px;border-radius:999px;font-weight:600;color:var(--ink-2);cursor:default;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.pill .swatch{width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.pill.is-active{background:var(--ink);color:var(--paper);border-color:var(--ink)}.pill.cover{font-family:var(--f-hand);font-size:16px}
+.btn{appearance:none;border:.5px solid var(--line);background:var(--paper);color:var(--ink);padding:7px 12px;border-radius:9px;font-weight:600;cursor:default;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{background:var(--paper-2)}.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}.btn.primary:hover{filter:brightness(1.08)}.btn svg{width:14px;height:14px}.btn.small{padding:5px 10px;font-size:12px}
+.btn.danger{color:oklch(50% 0.16 25);border-color:oklch(85% 0.06 25);background:oklch(96% 0.02 25)}
+.cal-page{padding:0 24px 60px;position:relative}
+.cal-header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:20px 4px 16px;flex-wrap:wrap}
+.cal-title{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.cal-yr{display:flex;align-items:baseline;gap:4px;color:var(--ink-3);font-family:var(--f-display)}
+.cal-yr .yr-num{font-size:46px;font-weight:600;color:var(--ink);letter-spacing:-.02em}.cal-yr .yr-cn{font-size:18px;font-family:var(--f-app)}
+.cal-month{position:relative;display:inline-flex;flex-direction:column;align-items:flex-start;padding:10px 22px 12px;border-radius:18px;background:var(--mc);color:color-mix(in oklab,var(--ink) 90%,var(--mcd) 30%);box-shadow:var(--shadow-1);border:.5px solid color-mix(in oklab,var(--mcd) 40%,transparent)}
+.cal-month .m-en{font-family:var(--f-display);font-weight:700;font-size:38px;letter-spacing:-.02em;line-height:1;color:var(--ink)}.cal-month .m-cn{font-family:var(--f-hand);font-size:22px;color:var(--ink-2);margin-top:2px}
+.cal-meta{display:flex;flex-direction:column;gap:4px;color:var(--ink-3);font-size:13px}.cal-meta-row{display:inline-flex;align-items:center;gap:6px}.cal-actions{display:inline-flex;gap:8px}
+.cal-main{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:flex-start}
+@media(max-width:1100px){.cal-main{grid-template-columns:1fr}}
+.cal-grid{background:var(--paper);border:.5px solid var(--line);border-radius:24px;box-shadow:var(--shadow-1);overflow:hidden;position:relative}
+.cal-grid::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--mc),color-mix(in oklab,var(--mc) 50%,var(--paper)))}
+.cal-week-head{display:grid;grid-template-columns:repeat(7,1fr);background:color-mix(in oklab,var(--mc) 35%,var(--paper));border-bottom:.5px solid var(--line)}
+.whead{padding:12px 14px;display:flex;align-items:baseline;gap:8px;font-family:var(--f-display);font-weight:600;color:var(--ink-2);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.whead .whead-cn{font-family:var(--f-app);font-size:11px;color:var(--ink-3);text-transform:none;letter-spacing:0}.whead.sun{color:var(--sun)}
+.cal-cells{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:minmax(112px,1fr)}
+.density-low .cal-cells{grid-auto-rows:96px}.density-high .cal-cells{grid-auto-rows:124px}
+.cell{appearance:none;text-align:left;border:0;background:transparent;border-right:.5px dashed var(--line-2);border-bottom:.5px dashed var(--line-2);padding:8px 10px 10px;display:flex;flex-direction:column;gap:6px;cursor:default;position:relative;overflow:hidden;transition:background .15s}
+.cell:nth-child(7n){border-right:0}.cell.pad{background:color-mix(in oklab,var(--paper) 88%,var(--bg) 12%)}.cell.pad .d{color:var(--ink-3);opacity:.45}
+.cell.cur:hover{background:color-mix(in oklab,var(--mc) 22%,var(--paper))}
+.cell.is-today{background:color-mix(in oklab,var(--mc) 55%,var(--paper));box-shadow:inset 0 0 0 2px color-mix(in oklab,var(--mcd) 60%,transparent)}
+.cell.has-color{background:color-mix(in oklab,var(--cellc) 18%,var(--paper))}.cell.is-sun .d{color:var(--sun)}
+.cell-top{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.cell .d{font-family:var(--f-display);font-weight:700;font-size:18px;color:var(--ink);line-height:1}
+.cell.is-today .d{position:relative}.cell.is-today .d::after{content:"";position:absolute;left:-4px;right:-4px;bottom:-4px;height:6px;background:var(--mcd);border-radius:4px;opacity:.55;z-index:-1}
+.lunar-d{font-size:10px;color:var(--ink-3);font-weight:500;line-height:1;opacity:.65;letter-spacing:.02em}
+.mood-emoji{margin-left:auto;font-size:16px;line-height:1;filter:drop-shadow(0 1px 1px rgba(0,0,0,.1))}
+.prio-mark{width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;color:#fff;background:#ff6b88;box-shadow:0 1px 2px rgba(255,107,136,.4)}
+.cell-list{display:flex;flex-direction:column;gap:2px;margin-top:2px}
+.evi{display:flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;color:var(--ink);line-height:1.25;padding:1px 0}
+.evi-bar{width:3px;height:11px;border-radius:2px;flex-shrink:0;background:var(--ink-3)}.evi.p1 .evi-bar{background:#ff6b88}.evi.p2 .evi-bar{background:#ffae5c}.evi.p3 .evi-bar{background:#9dc7ff}
+.evi.done .evi-text{text-decoration:line-through;color:var(--ink-3)}.evi-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.evi-more{font-size:10.5px;color:var(--ink-3)}
+.evi-chk{appearance:none;width:14px;height:14px;border-radius:50%;border:1.5px solid var(--line);background:transparent;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;color:var(--paper);transition:all .12s;font-size:8px}
+.evi-chk:hover{border-color:var(--ink-3);background:var(--paper-2)}.evi.done .evi-chk{background:oklch(70% 0.15 145);border-color:oklch(70% 0.15 145)}
+.cell-stickers{display:flex;flex-wrap:wrap;gap:3px;align-items:center;margin-top:auto}.cs{display:inline-flex;padding:1px}.cs.more{font-size:11px;color:var(--ink-3);padding:0 4px;background:var(--paper-2);border-radius:8px}
+.cal-side{display:flex;flex-direction:column;gap:14px}
+.card{background:var(--paper);border:.5px solid var(--line);border-radius:18px;box-shadow:var(--shadow-1);padding:14px;position:relative}
+.card-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.card-h strong{font-family:var(--f-display);font-size:14px}.card-h .hand{font-family:var(--f-hand);color:var(--ink-3);font-size:18px}.card-foot{font-size:11px;color:var(--ink-3);margin-top:10px;text-align:right}
+.seg{display:flex;gap:0;padding:3px;background:var(--paper-2);border-radius:10px;border:.5px solid var(--line);margin-bottom:10px}
+.seg-btn{appearance:none;flex:1;border:0;background:transparent;padding:6px 8px;border-radius:7px;font-weight:600;color:var(--ink-3);font-size:12px;cursor:default}.seg-btn.is-active{background:var(--paper);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.stick-card .stick-body{max-height:200px;overflow-y:auto}.stick-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}.stick-grid.emoji{grid-template-columns:repeat(7,1fr)}
+.stick-cell{appearance:none;border:.5px solid transparent;background:var(--paper-2);border-radius:9px;aspect-ratio:1;display:inline-flex;align-items:center;justify-content:center;font-size:18px;cursor:default;transition:transform .12s}.stick-cell:hover{transform:translateY(-1px) rotate(-3deg);border-color:var(--line);background:var(--paper)}
+.mood-card .mood-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.mood-pick{appearance:none;border:.5px solid var(--line);background:var(--paper-2);border-radius:12px;padding:8px 4px;cursor:default;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;color:var(--ink-3);font-weight:600;transition:all .15s}.mood-pick .me{font-size:20px}.mood-pick.is-on{background:color-mix(in oklab,var(--tone) 35%,var(--paper));border-color:var(--tone);color:var(--ink)}
+.note-card .note-area{width:100%;min-height:130px;resize:vertical;background:color-mix(in oklab,var(--mc) 12%,var(--paper));border:.5px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;color:var(--ink);outline:none;font-family:var(--f-hand);font-size:18px;line-height:1.5;background-image:repeating-linear-gradient(transparent 0,transparent 27px,color-mix(in oklab,var(--ink-3) 30%,transparent) 28px)}
+.modal-bg{position:fixed;inset:0;z-index:100;background:color-mix(in oklab,var(--ink) 50%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;animation:fadeIn .18s ease-out}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{width:min(560px,100%);max-height:calc(100vh - 48px);overflow:auto;background:var(--paper);border:.5px solid var(--line);border-radius:22px;box-shadow:var(--shadow-2);padding:18px;animation:pop .2s cubic-bezier(.3,1.3,.5,1)}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+.modal.sm{width:min(440px,100%)}
+.modal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.modal-h strong{font-family:var(--f-display);font-size:18px}
+.modal-date{display:flex;align-items:baseline;gap:10px}.modal-date .md-d{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1}.modal-date .md-m{color:var(--ink-2);font-weight:600}.modal-date .md-w{color:var(--ink-3);font-size:18px}
+.modal-title-input{width:100%;border:0;outline:none;background:transparent;font:inherit;font-family:var(--f-display);font-size:22px;font-weight:600;color:var(--ink);padding:8px 0;border-bottom:1.5px dashed var(--line);margin-bottom:14px}.modal-title-input.small{font-size:14px;padding:8px 12px;border:.5px solid var(--line);border-radius:9px}
+.modal-stickers{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 12px}.ms-chip{appearance:none;border:.5px solid var(--line);background:var(--paper-2);border-radius:999px;padding:4px 10px;cursor:default;display:inline-flex;align-items:center;gap:4px;transition:transform .12s}.ms-chip:hover{transform:scale(1.06) rotate(-4deg)}
+.modal-section{margin-bottom:14px}.modal-section>label{display:block;font-size:12px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}.modal-section.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.color-row{display:flex;gap:8px;flex-wrap:wrap}.col-dot{appearance:none;width:30px;height:30px;border-radius:50%;border:.5px solid rgba(0,0,0,.1);cursor:default;display:inline-flex;align-items:center;justify-content:center;transition:transform .12s}.col-dot:hover{transform:scale(1.1)}.col-dot.is-on{outline:2px solid var(--ink);outline-offset:2px}
+.modal-mood{display:flex;gap:6px;flex-wrap:wrap}.mm-pick{appearance:none;border:.5px solid var(--line);background:var(--paper-2);border-radius:999px;padding:6px 12px;display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--ink-2);cursor:default;font-size:13px}.mm-pick.is-on{background:color-mix(in oklab,var(--tone) 40%,var(--paper));border-color:var(--tone);color:var(--ink)}
+.modal-stickbox{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;background:var(--paper-2);border:.5px solid var(--line);border-radius:12px;padding:8px;max-height:160px;overflow-y:auto}.modal-stickbox .stick-cell{background:var(--paper)}
+.modal-foot{display:flex;align-items:center;gap:8px;margin-top:8px;padding-top:10px;border-top:.5px solid var(--line)}
+.emoji-row{display:flex;gap:6px;flex-wrap:wrap}.em-pick{appearance:none;border:.5px solid var(--line);background:var(--paper-2);width:34px;height:34px;border-radius:9px;font-size:18px;cursor:default}.em-pick.is-on{outline:2px solid var(--ink);outline-offset:1px}
+.ev-list{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+.ev-row{display:flex;align-items:center;gap:6px;padding:4px 6px;border-radius:10px;border:.5px solid var(--line);background:var(--paper-2);cursor:default}
+.ev-row.is-active{background:var(--paper);border-color:color-mix(in oklab,var(--ink) 30%,var(--line));box-shadow:0 1px 3px rgba(0,0,0,.06)}.ev-row.done .ev-input{text-decoration:line-through;color:var(--ink-3)}
+.ev-row .ev-bar{width:3px;height:24px;border-radius:2px;flex-shrink:0;background:var(--ink-3)}.ev-row.p1 .ev-bar{background:#ff6b88}.ev-row.p2 .ev-bar{background:#ffae5c}.ev-row.p3 .ev-bar{background:#9dc7ff}
+.ev-check{appearance:none;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;cursor:default;color:#fff}.ev-row.done .ev-check{background:oklch(70% 0.15 145);border-color:oklch(70% 0.15 145)}
+.ev-input{flex:1;min-width:0;border:0;outline:none;background:transparent;font:inherit;font-size:13.5px;font-weight:600;color:var(--ink);padding:4px 0}
+.ev-prio{display:inline-flex;gap:2px;flex-shrink:0}.evp{appearance:none;border:.5px solid var(--line);background:var(--paper);width:24px;height:22px;border-radius:6px;font-size:10px;font-weight:800;color:var(--ink-3);cursor:default;display:inline-flex;align-items:center;justify-content:center;letter-spacing:-1px}
+.evp.p1.is-on{background:#ff6b88;color:#fff;border-color:#ff6b88}.evp.p2.is-on{background:#ffae5c;color:#fff;border-color:#ffae5c}.evp.p3.is-on{background:#9dc7ff;color:#fff;border-color:#9dc7ff}
+.ev-sticks{display:inline-flex;gap:2px;align-items:center;flex-shrink:0}.ev-del{appearance:none;border:0;background:transparent;color:var(--ink-3);width:22px;height:22px;border-radius:6px;cursor:default;display:inline-flex;align-items:center;justify-content:center}.ev-del:hover{background:oklch(95% 0.04 25);color:oklch(50% 0.16 25)}
+.gantt-page{padding:8px 24px 60px}
+.gantt-tools{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;background:var(--paper);border:.5px solid var(--line);border-radius:18px;box-shadow:var(--shadow-1);padding:14px 16px;margin:14px 0 16px;position:relative}
+.gt-block{display:flex;flex-direction:column;gap:8px;min-width:0}.gt-block.right{margin-left:auto;align-self:center}
+.gt-label{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase}
+.month-chips,.cat-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.mini-btn{appearance:none;border:.5px solid var(--line);background:var(--paper-2);padding:4px 10px;border-radius:8px;font-weight:600;font-size:12px;color:var(--ink-2);cursor:default}
+.month-chips .sep{width:1px;height:18px;background:var(--line);margin:0 4px}
+.mchip{appearance:none;border:.5px solid var(--line);background:var(--paper);padding:5px 12px;border-radius:999px;font-weight:600;color:var(--ink-3);cursor:default;display:inline-flex;align-items:center;gap:6px;font-size:12.5px}
+.mchip .mchip-dot{width:8px;height:8px;border-radius:50%;background:var(--mc);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}.mchip.is-on{background:var(--mc);color:var(--ink);border-color:color-mix(in oklab,var(--mcd) 50%,transparent)}
+.catchip{display:inline-flex;align-items:center;border:.5px solid var(--line);background:var(--paper);border-radius:999px;padding-right:4px;overflow:hidden}
+.catchip-main{appearance:none;border:0;background:transparent;padding:5px 4px 5px 12px;display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--ink-2);cursor:default;font-size:13px}
+.cc-dot{width:9px;height:9px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}.catchip.is-on .catchip-main{color:var(--ink)}
+.catchip.is-on{background:color-mix(in oklab,var(--cc,var(--paper-2)) 30%,var(--paper));border-color:color-mix(in oklab,var(--cc,var(--line)) 60%,var(--line))}
+.catchip-edit{appearance:none;border:0;background:transparent;color:var(--ink-3);width:24px;height:24px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;cursor:default}.catchip-edit:hover{background:var(--paper-2);color:var(--ink)}
+.catchip.add{appearance:none;padding:5px 12px;gap:4px;color:var(--ink-2);border:.5px dashed var(--line);cursor:default;background:transparent;font-weight:600;font-size:12.5px;display:inline-flex;align-items:center}.catchip.add:hover{background:var(--paper-2)}
+.ddl-alert-bar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:color-mix(in oklab,var(--sun) 6%,var(--paper));border:.5px solid color-mix(in oklab,var(--sun) 15%,var(--line));border-radius:14px;margin-bottom:12px;font-size:13px;font-weight:600;color:var(--ink);flex-wrap:wrap}
+.ddl-alert-label{color:var(--ink-2);white-space:nowrap}
+.ddl-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:999px;font-size:12px;white-space:nowrap;border:.5px solid var(--line);background:var(--paper)}
+.ddl-chip-prio{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.ddl-chip-time{font-size:11px;color:var(--ink-3);margin-left:2px}
+.gantt-frame{display:grid;grid-template-columns:280px 1fr;background:var(--paper);border:.5px solid var(--line);border-radius:22px;box-shadow:var(--shadow-1);overflow:hidden}
+.gantt-side{border-right:.5px solid var(--line);background:color-mix(in oklab,var(--paper) 92%,var(--bg) 8%);overflow-y:auto;max-height:calc(100vh - 220px)}
+.gs-head{height:64px;padding:0 16px;display:flex;align-items:center;font-family:var(--f-display);font-weight:700;color:var(--ink-2);border-bottom:.5px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:2}
+.gs-group{border-bottom:.5px dashed var(--line-2);padding-bottom:6px}
+.gs-cat{height:44px;padding:0 14px;display:flex;align-items:center;gap:8px;background:color-mix(in oklab,var(--cc) 18%,var(--paper))}.gs-cat strong{font-weight:700}.gs-cat .ce{font-size:16px}
+.gs-cat .ct-count{margin-left:auto;font-size:11px;color:var(--ink-3);font-weight:600;background:var(--paper);padding:2px 8px;border-radius:999px;border:.5px solid var(--line)}
+.gs-task{height:44px;padding:0 14px 0 28px;display:flex;align-items:center;gap:8px;cursor:default;font-size:13px;color:var(--ink-2);border-bottom:.5px dashed var(--line-2)}.gs-task:last-child{border-bottom:0}.gs-task:hover{background:var(--paper-2)}
+.gst-bar{width:4px;height:18px;border-radius:3px;flex-shrink:0}
+.gst-prio{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.gst-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;color:var(--ink)}
+.gst-prog{font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;font-weight:600}
+.gs-empty{padding:8px 14px 12px 28px;color:var(--ink-3);font-size:12px;font-style:italic}
+.gantt-track-wrap{overflow:auto;max-height:calc(100vh - 220px);background:repeating-linear-gradient(90deg,transparent 0,transparent 25px,color-mix(in oklab,var(--ink) 4%,transparent) 26px)}
+.gantt-track{position:relative;min-width:100%}
+.track-header{position:sticky;top:0;z-index:3;background:var(--paper);border-bottom:.5px solid var(--line);height:64px}
+.th-months{position:relative;height:32px;border-bottom:.5px dashed var(--line)}
+.th-month{position:absolute;top:0;height:100%;background:color-mix(in oklab,var(--mc) 60%,var(--paper));color:var(--ink);border-right:.5px solid var(--line);display:flex;align-items:center;gap:8px;padding:0 12px;font-family:var(--f-display);font-weight:700}.th-month .thm-en{font-size:14px}.th-month .thm-cn{font-family:var(--f-app);font-size:12px;color:var(--ink-2);font-weight:600}
+.th-days{position:relative;height:32px}
+.th-day{position:absolute;top:0;height:100%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;border-right:.5px dashed var(--line-2)}.th-day.wk{background:color-mix(in oklab,var(--ink) 4%,transparent);color:var(--sun)}
+.th-day.is-today{background:color-mix(in oklab,var(--ink) 6%,transparent)!important}.th-day.is-today>span{background:var(--ink-2);color:var(--paper);border-radius:4px;padding:1px 5px;font-weight:700;font-size:10px}
+.track-body{position:relative}.track-group{position:relative}.track-grouprow{position:relative;background:color-mix(in oklab,var(--paper) 92%,var(--bg) 8%)}
+.track-monthcell{position:absolute;top:0;height:100%;opacity:.5}.track-row{position:relative;border-bottom:.5px dashed var(--line-2)}.track-monthbg{position:absolute;top:0;height:100%;background:var(--paper);border-right:.5px solid var(--line-2)}
+.wknd{position:absolute;top:0;height:100%;background:color-mix(in oklab,var(--ink) 4%,transparent)}
+.today-col{position:absolute;top:0;bottom:0;background:color-mix(in oklab,var(--ink) 5%,transparent);pointer-events:none}
+.task-bar{position:absolute;top:7px;height:30px;cursor:default;border:0;background:color-mix(in oklab,var(--cc) 60%,var(--paper));border-radius:999px;padding:0 10px;display:flex;align-items:center;gap:6px;color:var(--ink);font-weight:700;font-size:12px;box-shadow:var(--shadow-stick),inset 0 0 0 1.5px color-mix(in oklab,var(--cc) 80%,transparent);transition:transform .12s;overflow:hidden}.task-bar:hover{transform:translateY(-1px);filter:brightness(1.04)}
+.task-bar::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;z-index:2;border-radius:999px 0 0 999px}.task-bar.p1::before{background:#ff6b88}.task-bar.p2::before{background:#ffae5c}.task-bar.p3::before{background:#9dc7ff}
+.tb-fill{position:absolute;left:0;top:0;bottom:0;background:color-mix(in oklab,var(--cc) 90%,var(--ink));opacity:.32;pointer-events:none}
+.tb-label{position:relative;z-index:1;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tb-prog{position:relative;z-index:1;font-size:10.5px;color:var(--ink-2);font-weight:600;font-variant-numeric:tabular-nums}
+.cat-pickrow{display:flex;flex-wrap:wrap;gap:6px}.cat-pick{appearance:none;border:.5px solid var(--line);background:var(--paper-2);padding:6px 12px;border-radius:999px;cursor:default;display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--ink-2);font-size:13px}.cat-pick.is-on{background:color-mix(in oklab,var(--cc) 35%,var(--paper));border-color:var(--cc);color:var(--ink)}
+.prog-slider{appearance:none;-webkit-appearance:none;width:100%;height:8px;border-radius:999px;background:linear-gradient(90deg,var(--ink) 0%,var(--ink) var(--p,50%),var(--paper-2) var(--p,50%));outline:none}.prog-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:#fff;border:.5px solid var(--line);box-shadow:0 2px 6px rgba(0,0,0,.18);cursor:default}
+.point-mark{position:absolute;top:5px;height:32px;transform:translateX(-50%);appearance:none;border:0;background:transparent;cursor:default;display:flex;align-items:center;gap:6px;padding:0 8px 0 0;color:var(--ink);font-weight:700;font-size:11.5px;z-index:4}
+.point-mark .pm-flag{flex-shrink:0;width:22px;height:28px;background:linear-gradient(180deg,var(--cc) 0%,color-mix(in oklab,var(--cc) 70%,var(--ink)) 100%);color:#fff;border-radius:4px 8px 8px 4px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;line-height:1;box-shadow:0 2px 4px rgba(0,0,0,.18),inset 0 -2px 0 rgba(0,0,0,.15);position:relative}
+.point-mark .pm-flag::before{content:"";position:absolute;left:0;top:100%;border-left:11px solid color-mix(in oklab,var(--cc) 70%,var(--ink));border-bottom:6px solid transparent}
+.point-mark .pm-label{background:var(--paper);padding:3px 8px;border-radius:999px;border:.5px solid var(--line);white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.06);max-width:180px;overflow:hidden;text-overflow:ellipsis}.point-mark:hover .pm-label{background:color-mix(in oklab,var(--cc) 22%,var(--paper))}
+.gs-task.is-point .gst-flag{font-size:16px;flex-shrink:0}.gs-task.is-point{background:color-mix(in oklab,var(--paper) 96%,var(--bg) 4%)}
+.bg-decos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}.bg-deco{position:absolute}
+#root-app{position:relative;z-index:1}
+.tab,.pill,.mini-btn,.btn,.iconbtn,.catchip-main,.catchip.add,.mchip,.seg-btn,.col-dot,.em-pick,.mm-pick,.mood-pick,.cat-pick,.ev-input,.gs-cat strong,.gst-title,.gst-prog,.evp,.ev-del,.ev-check,.modal-h strong,.card-h strong,.whead,.th-month,.th-day,.gt-label,.pm-label,.ddl-alert-label,.ddl-chip{white-space:nowrap}
+.tab>*,.pill>*,.btn>*,.catchip-main>*,.mini-btn>*,.mchip>*,.seg-btn>*,.mm-pick>*,.cat-pick>*{white-space:nowrap}
+.gs-cat strong{overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media print{.topbar,.monthstrip,.twk-panel,.no-print{display:none!important}body{background:white}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>window.__TWEAK_DEFAULTS={fontFamily:"rounded",cuteDensity:"medium",dark:false};</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script type="text/babel">
+// ═══════ tweaks-panel ═══════
+const __TWEAKS_STYLE=`.twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;max-height:calc(100vh - 32px);display:flex;flex-direction:column;background:rgba(250,249,247,.78);color:#29261b;-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);border:.5px solid rgba(255,255,255,.6);border-radius:14px;box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}.twk-hd{display:flex;align-items:center;justify-content:space-between;padding:10px 8px 10px 14px;cursor:move;user-select:none}.twk-hd b{font-size:12px;font-weight:600}.twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px}.twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}.twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;min-height:0}.twk-row{display:flex;flex-direction:column;gap:5px}.twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}.twk-lbl{display:flex;justify-content:space-between;align-items:baseline;color:rgba(41,38,27,.72)}.twk-lbl>span:first-child{font-weight:500}.twk-val{color:rgba(41,38,27,.5)}.twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(41,38,27,.45);padding:10px 0 0}.twk-sect:first-child{padding-top:0}.twk-slider{appearance:none;width:100%;height:4px;margin:6px 0;border-radius:999px;background:rgba(0,0,0,.12);outline:none}.twk-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2)}.twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;background:rgba(0,0,0,.06);user-select:none}.twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}.twk-seg.dragging .twk-seg-thumb{transition:none}.twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;border-radius:6px;cursor:default;padding:4px 6px}.twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}.twk-toggle[data-on="1"]{background:#34c759}.twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}.twk-toggle[data-on="1"] i{transform:translateX(14px)}.twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}.twk-btn:hover{background:rgba(0,0,0,.88)}.twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}`;
+function useTweaks(d){const [v,setV]=React.useState(d);const set=React.useCallback((k,val)=>{const e=typeof k==='object'&&k!==null?k:{[k]:val};setV(p=>({...p,...e}));},[]);return[v,set];}
+function TweaksPanel({title='Tweaks',children}){const [open,setOpen]=React.useState(false);const ref=React.useRef(null);const off=React.useRef({x:16,y:16});const PAD=16;
+const clampVP=React.useCallback(()=>{const p=ref.current;if(!p)return;const w=p.offsetWidth,h=p.offsetHeight;off.current={x:Math.min(Math.max(PAD,window.innerWidth-w-PAD),Math.max(PAD,off.current.x)),y:Math.min(Math.max(PAD,window.innerHeight-h-PAD),Math.max(PAD,off.current.y))};p.style.right=off.current.x+'px';p.style.bottom=off.current.y+'px';},[]);
+React.useEffect(()=>{if(!open)return;clampVP();const ro=new ResizeObserver(clampVP);ro.observe(document.documentElement);return()=>ro.disconnect();},[open,clampVP]);
+React.useEffect(()=>{const fn=e=>{const t=e?.data?.type;if(t==='__activate_edit_mode')setOpen(true);else if(t==='__deactivate_edit_mode')setOpen(false)};window.addEventListener('message',fn);window.parent.postMessage({type:'__edit_mode_available'},'*');return()=>window.removeEventListener('message',fn);},[]);
+const dismiss=()=>{setOpen(false);window.parent.postMessage({type:'__edit_mode_dismissed'},'*')};
+const onDrag=e=>{const p=ref.current;if(!p)return;const r=p.getBoundingClientRect(),sx=e.clientX,sy=e.clientY,sR=window.innerWidth-r.right,sB=window.innerHeight-r.bottom;const mv=ev=>{off.current={x:sR-(ev.clientX-sx),y:sB-(ev.clientY-sy)};clampVP()};const up=()=>{window.removeEventListener('mousemove',mv);window.removeEventListener('mouseup',up)};window.addEventListener('mousemove',mv);window.addEventListener('mouseup',up);};
+if(!open)return null;return(<><style>{__TWEAKS_STYLE}</style><div ref={ref} className="twk-panel" style={{right:off.current.x,bottom:off.current.y}}><div className="twk-hd" onMouseDown={onDrag}><b>{title}</b><button className="twk-x" onMouseDown={e=>e.stopPropagation()} onClick={dismiss}>✕</button></div><div className="twk-body">{children}</div></div></>);}
+function TweakSection({label,children}){return<><div className="twk-sect">{label}</div>{children}</>}
+function TweakToggle({label,value,onChange}){return<div className="twk-row twk-row-h"><div className="twk-lbl"><span>{label}</span></div><button className="twk-toggle" data-on={value?'1':'0'} onClick={()=>onChange(!value)}><i/></button></div>}
+function TweakRadio({label,value,options,onChange}){const tr=React.useRef(null),[dg,setDg]=React.useState(false);const opts=options.map(o=>typeof o==='object'?o:{value:o,label:o});const idx=Math.max(0,opts.findIndex(o=>o.value===value)),n=opts.length;const vr=React.useRef(value);vr.current=value;
+const seg=cx=>{const r=tr.current.getBoundingClientRect(),i=Math.floor(((cx-r.left-2)/(r.width-4))*n);return opts[Math.max(0,Math.min(n-1,i))].value};
+const onDown=e=>{setDg(true);const v0=seg(e.clientX);if(v0!==vr.current)onChange(v0);const mv=ev=>{if(!tr.current)return;const v=seg(ev.clientX);if(v!==vr.current)onChange(v)};const up=()=>{setDg(false);window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};window.addEventListener('pointermove',mv);window.addEventListener('pointerup',up);};
+return<div className="twk-row"><div className="twk-lbl"><span>{label}</span></div><div ref={tr} onPointerDown={onDown} className={dg?'twk-seg dragging':'twk-seg'}><div className="twk-seg-thumb" style={{left:`calc(2px+${idx}*(100%-4px)/${n})`,width:`calc((100%-4px)/${n})`}}/>{opts.map(o=><button key={o.value}>{o.label}</button>)}</div></div>;}
+function TweakButton({label,onClick,secondary}){return<button className={secondary?'twk-btn secondary':'twk-btn'} onClick={onClick}>{label}</button>}
+
+// ═══════ icons ═══════
+const Icon=({name,size=16,...rest})=>{const s=size,p={width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"1.8",strokeLinecap:"round",strokeLinejoin:"round",...rest};
+switch(name){
+case'cal':return<svg {...p}><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>;
+case'gantt':return<svg {...p}><path d="M3 5h18M3 12h12M3 19h7"/><circle cx="20" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="19" r="1.4" fill="currentColor"/></svg>;
+case'sun':return<svg {...p}><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>;
+case'moon':return<svg {...p}><path d="M21 13.5A9 9 0 1 1 10.5 3a7 7 0 0 0 10.5 10.5z"/></svg>;
+case'plus':return<svg {...p}><path d="M12 5v14M5 12h14"/></svg>;
+case'left':return<svg {...p}><path d="M15 6l-6 6 6 6"/></svg>;
+case'right':return<svg {...p}><path d="M9 6l6 6-6 6"/></svg>;
+case'check':return<svg {...p}><path d="M4 12l5 5 11-12"/></svg>;
+case'x':return<svg {...p}><path d="M6 6l12 12M18 6L6 18"/></svg>;
+case'edit':return<svg {...p}><path d="M4 20h4l10-10-4-4L4 16v4z"/><path d="M14 6l4 4"/></svg>;
+case'trash':return<svg {...p}><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>;
+case'dl':return<svg {...p}><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>;
+case'print':return<svg {...p}><path d="M6 9V3h12v6M6 18H4v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6h-2M6 14h12v7H6z"/></svg>;
+case'note':return<svg {...p}><path d="M5 4h11l3 3v13H5z"/><path d="M9 10h6M9 14h6"/></svg>;
+case'tag':return<svg {...p}><path d="M3 3h8l10 10-8 8L3 11V3z"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/></svg>;
+case'today':return<svg {...p}><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>;
+case'filter':return<svg {...p}><path d="M3 5h18l-7 9v6l-4-2v-4L3 5z"/></svg>;
+default:return null;}};
+const Deco=({kind,size=64,color='currentColor',style})=>{const s=size;
+switch(kind){
+case'cloud':return<svg width={s} height={s*.7} viewBox="0 0 100 70" style={style}><path d="M22 50c-9 0-15-6-15-13 0-7 6-12 13-12 1-9 8-15 17-15 8 0 14 5 16 12 2-1 4-1 6-1 8 0 14 5 14 12 0 1 0 2-1 3 6 1 11 6 11 12 0 7-6 12-14 12H22z" fill="var(--paper)" stroke={color} strokeWidth="2" strokeLinejoin="round"/></svg>;
+case'star':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}><path d="M50 8 l11 27 l29 3 l-22 19 l7 28 l-25-15 l-25 15 l7-28 l-22-19 l29-3 z" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5" strokeLinejoin="round"/></svg>;
+case'heart':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}><path d="M50 86 C20 64 8 50 8 32 C8 19 19 10 31 10 c8 0 15 4 19 11 c4-7 11-11 19-11 c12 0 23 9 23 22 C92 50 80 64 50 86z" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5" strokeLinejoin="round"/></svg>;
+case'moon':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}><path d="M70 12 a40 40 0 1 0 18 65 a32 32 0 0 1 -18 -65z" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5"/><circle cx="62" cy="38" r="3" fill="rgba(0,0,0,.1)"/><circle cx="76" cy="58" r="2" fill="rgba(0,0,0,.1)"/></svg>;
+case'sparkle':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}><path d="M50 10 C52 35 65 48 90 50 C65 52 52 65 50 90 C48 65 35 52 10 50 C35 48 48 35 50 10z" fill={color} opacity=".9"/></svg>;
+case'rabbit':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}><ellipse cx="35" cy="22" rx="8" ry="18" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5"/><ellipse cx="65" cy="22" rx="8" ry="18" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5"/><ellipse cx="35" cy="22" rx="3" ry="10" fill="rgba(255,180,200,.5)"/><ellipse cx="65" cy="22" rx="3" ry="10" fill="rgba(255,180,200,.5)"/><circle cx="50" cy="62" r="28" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5"/><circle cx="40" cy="58" r="2.5" fill="#2a1f15"/><circle cx="60" cy="58" r="2.5" fill="#2a1f15"/><path d="M46 68 q4 4 8 0" fill="none" stroke="#2a1f15" strokeWidth="1.6" strokeLinecap="round"/><ellipse cx="35" cy="70" rx="6" ry="3" fill="rgba(255,180,200,.6)"/><ellipse cx="65" cy="70" rx="6" ry="3" fill="rgba(255,180,200,.6)"/></svg>;
+case'cat':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}><path d="M22 30 L32 12 L42 30 z" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5" strokeLinejoin="round"/><path d="M58 30 L68 12 L78 30 z" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5" strokeLinejoin="round"/><circle cx="50" cy="55" r="32" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5"/><circle cx="38" cy="52" r="2.6" fill="#2a1f15"/><circle cx="62" cy="52" r="2.6" fill="#2a1f15"/><path d="M48 62 q2 2 4 0" fill="none" stroke="#2a1f15" strokeWidth="1.6" strokeLinecap="round"/><circle cx="50" cy="60" r="1.6" fill="#e89cb0"/><path d="M38 65 l-12 -2 M38 67 l-12 0 M62 65 l12 -2 M62 67 l12 0" stroke="rgba(0,0,0,.25)" strokeWidth="1" strokeLinecap="round"/></svg>;
+case'bear':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}><circle cx="28" cy="30" r="11" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5"/><circle cx="72" cy="30" r="11" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5"/><circle cx="28" cy="30" r="5" fill="rgba(255,200,180,.6)"/><circle cx="72" cy="30" r="5" fill="rgba(255,200,180,.6)"/><circle cx="50" cy="58" r="32" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5"/><ellipse cx="50" cy="68" rx="14" ry="11" fill="rgba(255,235,215,.85)"/><circle cx="40" cy="52" r="2.6" fill="#2a1f15"/><circle cx="60" cy="52" r="2.6" fill="#2a1f15"/><ellipse cx="50" cy="64" rx="2.5" ry="2" fill="#2a1f15"/><path d="M46 70 q4 3 8 0" fill="none" stroke="#2a1f15" strokeWidth="1.6" strokeLinecap="round"/></svg>;
+case'flower':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}>{[0,72,144,216,288].map(a=><ellipse key={a} cx="50" cy="26" rx="13" ry="18" fill={color} stroke="rgba(0,0,0,.12)" strokeWidth="1.4" transform={`rotate(${a} 50 50)`}/>)}<circle cx="50" cy="50" r="9" fill="#fff7c2" stroke="rgba(0,0,0,.18)" strokeWidth="1.4"/></svg>;
+case'leaf':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}><path d="M20 80 C30 30 60 20 90 20 C90 50 70 80 30 90 z" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5"/><path d="M20 80 C40 65 60 50 90 30" fill="none" stroke="rgba(0,0,0,.2)" strokeWidth="1.4"/></svg>;
+case'donut':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}><circle cx="50" cy="50" r="38" fill="#f6c79a" stroke="rgba(0,0,0,.18)" strokeWidth="1.5"/><path d="M14 42 q12 -4 24 4 q12 6 24 -2 q14 -10 24 -2" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5" strokeLinejoin="round"/><circle cx="50" cy="50" r="12" fill="var(--paper)" stroke="rgba(0,0,0,.18)" strokeWidth="1.5"/>{['#ff8db0','#9dd9ff','#fff39a'].map((c,i)=><circle key={i} cx={30+i*20} cy={28+i*4} r="2" fill={c}/>)}</svg>;
+case'planet':return<svg width={s} height={s} viewBox="0 0 100 100" style={style}><ellipse cx="50" cy="55" rx="42" ry="10" fill="none" stroke={color} strokeWidth="2" opacity=".6"/><circle cx="50" cy="48" r="22" fill={color} stroke="rgba(0,0,0,.15)" strokeWidth="1.5"/><circle cx="44" cy="44" r="3" fill="rgba(255,255,255,.4)"/></svg>;
+default:return null;}};
+
+// ═══════ stickers ═══════
+const STICKERS={emoji:{items:['😊','🥰','🤩','😴','😭','😤','🤔','🥹','🥳','😎','🫣','🤯','😋','🥺','💪','✨','🎉','🎁','🍰','🍵','☕️','🌸','🌟','🍀','🌈','📚','✏️','💼','💌','🎯','🔥','💯','⏰','📌','🍓','🐰','🐱','🐻','🌙','☁️']},mood:{items:[{id:'happy',emoji:'☺️',label:'开心',tone:'#ffd76a'},{id:'love',emoji:'💕',label:'喜欢',tone:'#ff9bbc'},{id:'calm',emoji:'🌿',label:'平静',tone:'#b6e2c8'},{id:'tired',emoji:'😮‍💨',label:'累',tone:'#c8b6e2'},{id:'sad',emoji:'🥲',label:'难过',tone:'#9dd0ff'},{id:'busy',emoji:'⏳',label:'忙碌',tone:'#ffae7a'},{id:'rest',emoji:'🛋️',label:'休息',tone:'#a8e1c5'},{id:'focus',emoji:'🎯',label:'专注',tone:'#ff8b8b'},{id:'idea',emoji:'💡',label:'灵感',tone:'#ffe588'},{id:'angry',emoji:'😤',label:'生气',tone:'#ff8d6a'},{id:'stress',emoji:'🫨',label:'压力',tone:'#d6a4ff'}]}};
+const SvgStickers=[{id:'svg-star',render:(s=22)=><Deco kind="star" size={s} color="#ffce4f"/>},{id:'svg-star2',render:(s=22)=><Deco kind="star" size={s} color="#ff9bbc"/>},{id:'svg-heart',render:(s=22)=><Deco kind="heart" size={s} color="#ff8fb1"/>},{id:'svg-heart2',render:(s=22)=><Deco kind="heart" size={s} color="#9dd0ff"/>},{id:'svg-cloud',render:(s=22)=><Deco kind="cloud" size={s} color="#9dc7ff"/>},{id:'svg-cloud2',render:(s=22)=><Deco kind="cloud" size={s} color="#ffd1e0"/>},{id:'svg-moon',render:(s=22)=><Deco kind="moon" size={s} color="#cdb6ff"/>},{id:'svg-flower',render:(s=22)=><Deco kind="flower" size={s} color="#ffb1c1"/>},{id:'svg-flower2',render:(s=22)=><Deco kind="flower" size={s} color="#ffd76a"/>},{id:'svg-flower3',render:(s=22)=><Deco kind="flower" size={s} color="#b6e2c8"/>},{id:'svg-leaf',render:(s=22)=><Deco kind="leaf" size={s} color="#a8d99b"/>},{id:'svg-spark',render:(s=22)=><Deco kind="sparkle" size={s} color="#ffd95e"/>},{id:'svg-spark2',render:(s=22)=><Deco kind="sparkle" size={s} color="#ff9bbc"/>},{id:'svg-rabbit',render:(s=22)=><Deco kind="rabbit" size={s} color="#fff1de"/>},{id:'svg-rabbit2',render:(s=22)=><Deco kind="rabbit" size={s} color="#ffd6e0"/>},{id:'svg-cat',render:(s=22)=><Deco kind="cat" size={s} color="#ffe0b8"/>},{id:'svg-cat2',render:(s=22)=><Deco kind="cat" size={s} color="#d8d8d8"/>},{id:'svg-bear',render:(s=22)=><Deco kind="bear" size={s} color="#e6c8a3"/>},{id:'svg-bear2',render:(s=22)=><Deco kind="bear" size={s} color="#fff1de"/>},{id:'svg-donut',render:(s=22)=><Deco kind="donut" size={s} color="#ff9fbb"/>},{id:'svg-donut2',render:(s=22)=><Deco kind="donut" size={s} color="#9dd9ff"/>},{id:'svg-planet',render:(s=22)=><Deco kind="planet" size={s} color="#9bb8ff"/>},{id:'svg-planet2',render:(s=22)=><Deco kind="planet" size={s} color="#ffae7a"/>}];
+function renderSticker(tk,sz=22){if(typeof tk==='string')return<span style={{fontSize:sz,lineHeight:1}}>{tk}</span>;if(tk?.svg){const d=SvgStickers.find(s=>s.id===tk.svg);return d?d.render(sz):null;}return null;}
+
+// ═══════ 农历 ═══════
+const LI=[0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,0x04ae0,0x0a5b6,0x0a4d0,0x0d250,0x1d255,0x0b540,0x0d6a0,0x0ada2,0x095b0,0x14977,0x04970,0x0a4b0,0x0b4b5,0x06a50,0x06d40,0x1ab54,0x02b60,0x09570,0x052f2,0x04970,0x06566,0x0d4a0,0x0ea50,0x06e95,0x05ad0,0x02b60,0x186e3,0x092e0,0x1c8d7,0x0c950,0x0d4a0,0x1d8a6,0x0b550,0x056a0,0x1a5b4,0x025d0,0x092d0,0x0d2b2,0x0a950,0x0b557,0x06ca0,0x0b550,0x15355,0x04da0,0x0a5b0,0x14573,0x052b0,0x0a9a8,0x0e950,0x06aa0,0x0aea6,0x0ab50,0x04b60,0x0aae4,0x0a570,0x05260,0x0f263,0x0d950,0x05b57,0x056a0,0x096d0,0x04dd5,0x04ad0,0x0a4d0,0x0d4d4,0x0d250,0x0d558,0x0b540,0x0b6a0,0x195a6,0x095b0,0x049b0,0x0a974,0x0a4b0,0x0b27a,0x06a50,0x06d40,0x0af46,0x0ab60,0x09570,0x04af5,0x04970,0x064b0,0x074a3,0x0ea50,0x06b58,0x05ac0,0x0ab60,0x096d5,0x092e0,0x0c960,0x0d954,0x0d4a0,0x0da50,0x07552,0x056a0,0x0abb7,0x025d0,0x092d0,0x0cab5,0x0a950,0x0b4a0,0x0baa4,0x0ad50,0x055d9,0x04ba0,0x0a5b0,0x15176,0x052b0,0x0a930,0x07954,0x06aa0,0x0ad50,0x05b52,0x04b60,0x0a6e6,0x0a4e0,0x0d260,0x0ea65,0x0d530,0x05aa0,0x076a3,0x096d0,0x04afb,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45,0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0,0x14b63];
+const DN=['初一','初二','初三','初四','初五','初六','初七','初八','初九','初十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十','廿一','廿二','廿三','廿四','廿五','廿六','廿七','廿八','廿九','三十'];
+const MN=['正月','二月','三月','四月','五月','六月','七月','八月','九月','十月','冬月','腊月'];
+function lLM(y){return LI[y-1900]&0xf}
+function lMD(y,m){return(LI[y-1900]&(0x10000>>m))?30:29}
+function lLD(y){return lLM(y)?(LI[y-1900]&0x10000)?30:29:0}
+function lYD(y){let s=348;for(let i=0x8000;i>0x8;i>>=1)s+=(LI[y-1900]&i)?1:0;return s+lLD(y)}
+function s2l(sy,sm,sd){if(sy<1900||sy>2050)return null;const base=new Date(1900,0,31),obj=new Date(sy,sm-1,sd);let off=Math.floor((obj-base)/86400000);if(off<0)return null;let year,dy;for(year=1900;year<2051;year++){dy=lYD(year);if(off<dy)break;off-=dy;}const leap=lLM(year);let month=1,isLeap=false;for(let m=1;m<=12;m++){let md=lMD(year,m);if(off<md){month=m;break;}off-=md;if(leap===m){let ld=lLD(year);if(off<ld){month=m;isLeap=true;break;}off-=ld;}}return{year,month,day:off+1,isLeap};}
+function lunarText(sy,sm,sd){try{const l=s2l(sy,sm,sd);if(!l)return'';if(l.day===1)return(l.isLeap?'闰':'')+MN[l.month-1];return DN[l.day-1];}catch(e){return'';}}
+
+// ═══════ store ═══════
+const STORE_KEY='planner_v2';
+const DEFAULT_CATEGORIES=[{id:'thesis',name:'论文',color:'#ff9bbc',emoji:'📝'},{id:'intern',name:'实习',color:'#9dc7ff',emoji:'💼'},{id:'resume',name:'简历投递',color:'#ffce6e',emoji:'📮'},{id:'exam',name:'考试',color:'#a8e1c5',emoji:'📚'},{id:'life',name:'生活',color:'#cdb6ff',emoji:'🌿'}];
+const PRIORITIES=[{id:1,label:'高',short:'!!!',color:'#ff6b88'},{id:2,label:'中',short:'!!',color:'#ffae5c'},{id:3,label:'低',short:'!',color:'#9dc7ff'}];
+const DEFAULT_STATE={year:2026,month:0,events:{},monthNotes:{},mood:{},tasks:[],categories:DEFAULT_CATEGORIES.slice()};
+function loadState(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return seedDemo({...DEFAULT_STATE});const s=JSON.parse(raw);if(s.events)Object.keys(s.events).forEach(k=>{const v=s.events[k];if(!Array.isArray(v))s.events[k]=[{id:uid('ev'),text:v.text||'',priority:2,stickers:v.stickers||[],color:v.color||'',done:!!v.done}];});if(s.tasks)s.tasks=s.tasks.map(t=>({type:'range',...t}));return{...DEFAULT_STATE,...s,categories:s.categories?.length?s.categories:DEFAULT_CATEGORIES.slice()};}catch(e){return seedDemo({...DEFAULT_STATE});}}
+function saveState(s){try{localStorage.setItem(STORE_KEY,JSON.stringify(s));}catch(e){}}
+function seedDemo(s){const t=new Date();s.year=t.getFullYear();s.month=t.getMonth();const Y=s.year,k=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,mk=(text,priority=2,stickers=[],color='')=>({id:uid('ev'),text,priority,stickers,color,done:false});
+s.events[k(Y,s.month,5)]=[mk('开题答辩',1,[{svg:'svg-star'},'📝'],'#ff9bbc'),mk('准备 PPT',2,['💻'])];
+s.events[k(Y,s.month,8)]=[mk('瑜伽课',3,['🧘‍♀️'])];
+s.events[k(Y,s.month,12)]=[mk('TikTok 终面',1,['💼',{svg:'svg-spark'}],'#9dc7ff'),mk('打印简历',2,['📄'])];
+s.events[k(Y,s.month,14)]=[mk('交论文初稿',1,[{svg:'svg-heart'}],'#ff9bbc')];
+s.events[k(Y,s.month,18)]=[mk('生日 🎂',2,['🎂','🎉',{svg:'svg-flower'}],'#ffce6e'),mk('和家人吃饭',3,['🍰'])];
+s.events[k(Y,s.month,22)]=[mk('GRE 模考',1,['📚'],'#a8e1c5')];
+s.events[k(Y,s.month,28)]=[mk('回家',2,[{svg:'svg-rabbit'},'🚄'],'#cdb6ff')];
+s.mood[k(Y,s.month,2)]='happy';s.mood[k(Y,s.month,5)]='busy';s.mood[k(Y,s.month,8)]='rest';s.mood[k(Y,s.month,12)]='focus';s.mood[k(Y,s.month,18)]='love';
+s.monthNotes[`${Y}-${String(s.month+1).padStart(2,'0')}`]='本月目标:\n· 论文初稿 ✓\n· 投 5 份简历\n· 每周三次健身';
+s.tasks=[
+{id:'t1',type:'range',title:'毕业论文写作',categoryId:'thesis',start:`${Y}-01-05`,end:`${Y}-04-15`,progress:35,priority:1},
+{id:'t2',type:'range',title:'文献综述章节',categoryId:'thesis',start:`${Y}-01-08`,end:`${Y}-02-10`,progress:80,priority:2},
+{id:'t3',type:'range',title:'数据分析',categoryId:'thesis',start:`${Y}-02-15`,end:`${Y}-03-20`,progress:10,priority:2},
+{id:'tp1',type:'point',title:'论文初稿 DDL',categoryId:'thesis',start:`${Y}-04-15`,end:`${Y}-04-15`,priority:1},
+{id:'t4',type:'range',title:'TikTok 实习',categoryId:'intern',start:`${Y}-03-01`,end:`${Y}-08-30`,progress:0,priority:2},
+{id:'tp2',type:'point',title:'实习入职',categoryId:'intern',start:`${Y}-03-01`,end:`${Y}-03-01`,priority:2},
+{id:'t5',type:'range',title:'秋招简历投递',categoryId:'resume',start:`${Y}-07-15`,end:`${Y}-10-30`,progress:0,priority:1},
+{id:'tp3',type:'point',title:'秋招启动',categoryId:'resume',start:`${Y}-07-15`,end:`${Y}-07-15`,priority:1},
+{id:'t6',type:'range',title:'雅思备考',categoryId:'exam',start:`${Y}-02-01`,end:`${Y}-04-20`,progress:50,priority:1},
+{id:'tp4',type:'point',title:'雅思考试',categoryId:'exam',start:`${Y}-04-25`,end:`${Y}-04-25`,priority:1},
+{id:'t8',type:'range',title:'瑜伽/健身',categoryId:'life',start:`${Y}-01-01`,end:`${Y}-12-31`,progress:25,priority:3},
+{id:'t9',type:'range',title:'毕业旅行',categoryId:'life',start:`${Y}-05-10`,end:`${Y}-05-25`,progress:0,priority:2},
+{id:'tp5',type:'point',title:'生日 🎂',categoryId:'life',start:`${Y}-01-18`,end:`${Y}-01-18`,priority:3}
+];return s;}
+function useStore(){const [state,setState]=React.useState(loadState);React.useEffect(()=>{saveState(state);},[state]);
+const update=patch=>setState(s=>({...s,...(typeof patch==='function'?patch(s):patch)}));
+const setDayEvents=(date,list)=>setState(s=>{const events={...s.events};if(!list||!list.length)delete events[date];else events[date]=list;return{...s,events};});
+const addEvent=(date,ev)=>setState(s=>{const events={...s.events};const list=events[date]?[...events[date]]:[];list.push({id:uid('ev'),priority:2,stickers:[],color:'',done:false,...ev});events[date]=list;return{...s,events};});
+const updateEvent=(date,id,patch)=>setState(s=>{const events={...s.events};events[date]=(events[date]||[]).map(e=>e.id===id?{...e,...patch}:e);return{...s,events};});
+const removeEvent=(date,id)=>setState(s=>{const events={...s.events};const list=(events[date]||[]).filter(e=>e.id!==id);if(!list.length)delete events[date];else events[date]=list;return{...s,events};});
+const setMood=(date,moodId)=>setState(s=>{const mood={...s.mood};if(!moodId)delete mood[date];else mood[date]=moodId;return{...s,mood};});
+const setMonthNote=(ymKey,text)=>setState(s=>({...s,monthNotes:{...s.monthNotes,[ymKey]:text}}));
+const addCategory=cat=>setState(s=>({...s,categories:[...s.categories,cat]}));
+const updateCategory=(id,patch)=>setState(s=>({...s,categories:s.categories.map(c=>c.id===id?{...c,...patch}:c)}));
+const removeCategory=id=>setState(s=>({...s,categories:s.categories.filter(c=>c.id!==id),tasks:s.tasks.filter(t=>t.categoryId!==id)}));
+const addTask=t=>setState(s=>({...s,tasks:[...s.tasks,t]}));
+const updateTask=(id,patch)=>setState(s=>({...s,tasks:s.tasks.map(t=>t.id===id?{...t,...patch}:t)}));
+const removeTask=id=>setState(s=>({...s,tasks:s.tasks.filter(t=>t.id!==id)}));
+return{state,update,setDayEvents,addEvent,updateEvent,removeEvent,setMood,setMonthNote,addCategory,updateCategory,removeCategory,addTask,updateTask,removeTask};}
+const MONTH_NAMES_EN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MONTH_NAMES_CN=['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
+const WEEK_NAMES_EN_MON=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const WEEK_NAMES_CN_MON=['一','二','三','四','五','六','日'];
+function ymd(d){return d instanceof Date?`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`:d;}
+function parseYmd(s){const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);}
+function daysInMonth(y,m){return new Date(y,m+1,0).getDate();}
+function firstDayOffsetMon(y,m){return(new Date(y,m,1).getDay()+6)%7;}
+function isToday(y,m,d){const t=new Date();return t.getFullYear()===y&&t.getMonth()===m&&t.getDate()===d;}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function uid(p='id'){return`${p}-${Math.random().toString(36).slice(2,8)}-${Date.now().toString(36).slice(-4)}`;}
+function monthColor(m){return{bg:`var(--m${m+1})`,dark:`var(--m${m+1}d)`};}
+// ═══════════════════════════════════════════════════════════════
+// CalendarView  (修改2:格内点击完成  修改3:农历  修改5:DDL联动)
+// ═══════════════════════════════════════════════════════════════
+function CalendarView({ store, density }){
+  const { state, update, setDayEvents, addEvent, updateEvent, removeEvent, setMood, setMonthNote } = store;
+  const { year, month } = state;
+  const weeks = WEEK_NAMES_EN_MON;
+  const weeksCn = WEEK_NAMES_CN_MON;
+
+  const total = daysInMonth(year, month);
+  const offset = firstDayOffsetMon(year, month);
+  const cells = [];
+  const prevTotal = daysInMonth(year, month===0?year-1:year, month===0?11:month-1);
+  for (let i=offset-1; i>=0; i--) cells.push({ kind:'pad', day: prevTotal - i });
+  for (let d=1; d<=total; d++) cells.push({ kind:'cur', day: d, date: ymd(new Date(year, month, d)) });
+  while (cells.length % 7 !== 0) cells.push({ kind:'pad', day: cells.length - offset - total + 1 });
+  while (cells.length < 42) cells.push({ kind:'pad', day: cells.length - offset - total + 1 });
+
+  const [editing, setEditing] = React.useState(null);
+  const ymKey = `${year}-${String(month+1).padStart(2,'0')}`;
+  const moodCount = Object.keys(state.mood).filter(k => k.startsWith(ymKey)).length;
+  const mc = monthColor(month);
+
+  const goPrev = () => { if (month===0) update({year:year-1,month:11}); else update({month:month-1}); };
+  const goNext = () => { if (month===11) update({year:year+1,month:0}); else update({month:month+1}); };
+  const goToday = () => { const t=new Date(); update({year:t.getFullYear(),month:t.getMonth()}); };
+  const decoIcons = ['flower','star','leaf','heart','sparkle','cloud','donut','rabbit','cat','bear','moon','planet'];
+
+  // 修改5: 从甘特 tasks 中提取 point 类型任务，按日期索引
+  const ddlMap = React.useMemo(()=>{
+    const map = {};
+    (state.tasks||[]).forEach(t=>{
+      if(t.type==='point'){
+        if(!map[t.start]) map[t.start]=[];
+        map[t.start].push(t);
+      }
+    });
+    return map;
+  }, [state.tasks]);
+
+  return (
+    <div className="cal-page">
+      <div className="monthstrip">
+        <button className="pill cover" onClick={()=>update({year:year-1})}><Icon name="left" size={12}/>{year-1}</button>
+        {MONTH_NAMES_EN.map((nm,i)=>(
+          <button key={i} className={`pill ${i===month?'is-active':''}`} onClick={()=>update({month:i})}>
+            <span className="swatch" style={{background:`var(--m${i+1})`}}/>{nm}
+            <span style={{opacity:.6,fontWeight:500,marginLeft:2}}>{MONTH_NAMES_CN[i]}</span>
+          </button>
+        ))}
+        <button className="pill cover" onClick={()=>update({year:year+1})}>{year+1}<Icon name="right" size={12}/></button>
+      </div>
+
+      <div className="cal-header">
+        <div className="cal-title">
+          <div className="cal-yr"><span className="yr-num">{year}</span><span className="yr-cn">年</span></div>
+          <div className="cal-month" style={{'--mc':mc.bg,'--mcd':mc.dark}}>
+            <span className="m-en">{MONTH_NAMES_EN[month]}</span>
+            <span className="m-cn">{MONTH_NAMES_CN[month]}</span>
+            <Deco kind={decoIcons[month]} size={36} color={`var(--m${month+1}d)`}
+              style={{position:'absolute',right:8,top:-26,transform:'rotate(-12deg)',opacity:.7,pointerEvents:'none'}}/>
+          </div>
+          <div className="cal-meta">
+            <div className="cal-meta-row"><Icon name="today" size={13}/> 今天 {ymd(new Date())}</div>
+            <div className="cal-meta-row"><Icon name="check" size={13}/> 心情打卡 {moodCount}/{total} 天</div>
+          </div>
+        </div>
+        <div className="cal-actions">
+          <button className="btn" onClick={goPrev}><Icon name="left"/> 上月</button>
+          <button className="btn primary" onClick={goToday}><Icon name="today"/> 今天</button>
+          <button className="btn" onClick={goNext}>下月 <Icon name="right"/></button>
+        </div>
+      </div>
+
+      <div className="cal-main">
+        <div className={`cal-grid density-${density}`} style={{'--mc':mc.bg,'--mcd':mc.dark}}>
+          <div className="cal-week-head">
+            {weeks.map((w,i)=>(
+              <div key={w} className={`whead ${i===6?'sun':''}`}><span>{w}</span><span className="whead-cn">周{weeksCn[i]}</span></div>
+            ))}
+          </div>
+          <div className="cal-cells">
+            {cells.map((c,i)=>{
+              if(c.kind==='pad') return <div key={i} className="cell pad"><span className="d">{c.day}</span></div>;
+              const list = state.events[c.date] || [];
+              const ddls = ddlMap[c.date] || []; // 修改5
+              const mood = state.mood[c.date];
+              const moodDef = mood ? STICKERS.mood.items.find(m=>m.id===mood) : null;
+              const isSun = (i%7)===6;
+              const allStickers = list.flatMap(ev=>ev.stickers||[]);
+              const cellColor = list.find(ev=>ev.color)?.color;
+              const topPriority = list.length ? Math.min(...list.map(e=>e.priority||3)) : null;
+              const lunar = lunarText(year, month+1, c.day); // 修改3
+
+              // 修改2: 格内点击完成
+              const toggleDone = (date, evId, e) => {
+                e.stopPropagation();
+                const ev = (state.events[date]||[]).find(x=>x.id===evId);
+                if(ev) updateEvent(date, evId, {done: !ev.done});
+              };
+
+              return (
+                <button key={i} className={`cell cur ${isToday(year,month,c.day)?'is-today':''} ${isSun?'is-sun':''} ${cellColor?'has-color':''}`}
+                  style={cellColor?{'--cellc':cellColor}:undefined}
+                  onClick={()=>setEditing({date:c.date})}>
+                  <div className="cell-top">
+                    <span className="d">{c.day}</span>
+                    <span className="lunar-d">{lunar}</span> {/* 修改3 */}
+                    {topPriority===1 && <span className="prio-mark p1" title="高优先级">!</span>}
+                    {moodDef && <span className="mood-emoji" title={moodDef.label}>{moodDef.emoji}</span>}
+                  </div>
+                  {/* 修改2: 带checkbox的计划列表 */}
+                  {list.length>0 && (
+                    <div className="cell-list">
+                      {list.slice(0,3).map(ev=>(
+                        <div key={ev.id} className={`evi p${ev.priority||3} ${ev.done?'done':''}`}>
+                          <span className="evi-chk" onClick={e=>toggleDone(c.date,ev.id,e)} title={ev.done?'点击恢复':'点击完成'}>
+                            {ev.done ? '✓' : ''}
+                          </span>
+                          <span className="evi-bar"/>
+                          <span className="evi-text">{ev.text||'(无标题)'}</span>
+                        </div>
+                      ))}
+                      {list.length>3 && <div className="evi-more">+{list.length-3} 更多</div>}
+                    </div>
+                  )}
+                  {/* 修改5: 显示甘特DDL */}
+                  {ddls.length>0 && (
+                    <div className="cell-list" style={{marginTop: list.length>0?2:0}}>
+                      {ddls.map(t=>{
+                        const cat = state.categories.find(c=>c.id===t.categoryId);
+                        const prioColor = (PRIORITIES.find(p=>p.id===(t.priority||2))||PRIORITIES[1]).color;
+                        return (
+                          <div key={t.id} className={`evi p${t.priority||3}`}>
+                            <span className="evi-bar" style={{background:prioColor}}/>
+                            <span className="evi-text">⚑ {t.title}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                  {!!allStickers.length && (
+                    <div className="cell-stickers">
+                      {allStickers.slice(0,5).map((tk,idx)=>(
+                        <span key={idx} className="cs">{renderSticker(tk,14)}</span>
+                      ))}
+                      {allStickers.length>5 && <span className="cs more">+{allStickers.length-5}</span>}
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <aside className="cal-side">
+          <StickerLibInline onPickToToday={(tk)=>{
+            const td=ymd(new Date());const list=state.events[td]||[];
+            if(!list.length) addEvent(td,{text:'今日新计划',priority:2,stickers:[tk]});
+            else{const last=list[list.length-1];updateEvent(td,last.id,{stickers:[...(last.stickers||[]),tk]});}
+          }}/>
+          <MoodPanel selected={state.mood[ymd(new Date())]} onPick={id=>setMood(ymd(new Date()),id)}/>
+          <NoteCard title={`${MONTH_NAMES_CN[month]}・笔记`} value={state.monthNotes[ymKey]||''} onChange={v=>setMonthNote(ymKey,v)}/>
+        </aside>
+      </div>
+
+      {editing && (
+        <DayEditor date={editing.date} list={state.events[editing.date]||[]} mood={state.mood[editing.date]}
+          onSave={list=>setDayEvents(editing.date,list)} onMood={m=>setMood(editing.date,m)} onClose={()=>setEditing(null)}/>
+      )}
+    </div>
+  );
+}
+
+function StickerLibInline({ onPickToToday }){
+  const [tab,setTab]=React.useState('emoji');
+  return (
+    <div className="card stick-card">
+      <div className="card-h"><strong>贴纸库</strong><span className="hand">stickers ✦</span></div>
+      <div className="seg">
+        {[['emoji','😊 Emoji'],['svg','✦ 卡通']].map(([k,nm])=>(
+          <button key={k} className={`seg-btn ${tab===k?'is-active':''}`} onClick={()=>setTab(k)}>{nm}</button>
+        ))}
+      </div>
+      <div className="stick-body">
+        {tab==='emoji'&&<div className="stick-grid emoji">{STICKERS.emoji.items.map(e=><button key={e} className="stick-cell" onClick={()=>onPickToToday(e)}>{e}</button>)}</div>}
+        {tab==='svg'&&<div className="stick-grid">{SvgStickers.map(s=><button key={s.id} className="stick-cell" onClick={()=>onPickToToday({svg:s.id})}>{s.render(26)}</button>)}</div>}
+      </div>
+      <div className="card-foot">点击 → 添加到今日 ✦</div>
+    </div>
+  );
+}
+
+function MoodPanel({ selected, onPick }){
+  return (
+    <div className="card mood-card">
+      <div className="card-h"><strong>今日心情</strong><span className="hand">mood ♡</span></div>
+      <div className="mood-grid">
+        {STICKERS.mood.items.map(m=>(
+          <button key={m.id} className={`mood-pick ${selected===m.id?'is-on':''}`} style={{'--tone':m.tone}}
+            onClick={()=>onPick(selected===m.id?null:m.id)}>
+            <span className="me">{m.emoji}</span><span className="ml">{m.label}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function NoteCard({ title, value, onChange }){
+  return (
+    <div className="card note-card">
+      <div className="card-h"><strong>{title}</strong><Icon name="note" size={14}/></div>
+      <textarea className="note-area" value={value} placeholder="写点什么呢～本月小目标？" onChange={e=>onChange(e.target.value)}/>
+      <div className="card-foot">手写笔记区 · 自动保存</div>
+    </div>
+  );
+}
+
+function DayEditor({ date, list, mood, onSave, onMood, onClose }){
+  const [items,setItems]=React.useState(()=>list.length?list.map(e=>({...e})):[{id:uid('ev'),text:'',priority:2,stickers:[],color:'',done:false}]);
+  const [activeIdx,setActiveIdx]=React.useState(0);
+  const [pickerTab,setPickerTab]=React.useState('emoji');
+  const colors=['','#ff9bbc','#ffce6e','#a8e1c5','#9dc7ff','#cdb6ff','#ffae7a'];
+  const d=parseYmd(date);
+  const cur=items[activeIdx]||items[0];
+  const setCur=patch=>setItems(arr=>arr.map((e,i)=>i===activeIdx?{...e,...patch}:e));
+  const addItem=()=>{setItems(arr=>[...arr,{id:uid('ev'),text:'',priority:2,stickers:[],color:'',done:false}]);setActiveIdx(items.length);};
+  const removeItem=idx=>{setItems(arr=>{const next=arr.filter((_,i)=>i!==idx);return next.length?next:[{id:uid('ev'),text:'',priority:2,stickers:[],color:'',done:false}];});setActiveIdx(0);};
+  const addSticker=tk=>setCur({stickers:[...(cur.stickers||[]),tk]});
+  const removeSticker=i=>setCur({stickers:cur.stickers.filter((_,j)=>j!==i)});
+
+  return (
+    <div className="modal-bg" onClick={onClose}>
+      <div className="modal" onClick={e=>e.stopPropagation()}>
+        <div className="modal-h">
+          <div className="modal-date">
+            <span className="md-d">{d.getDate()}</span>
+            <span className="md-m">{MONTH_NAMES_EN[d.getMonth()]} {d.getFullYear()}</span>
+            <span className="md-w hand">{['周日','周一','周二','周三','周四','周五','周六'][d.getDay()]}</span>
+          </div>
+          <button className="iconbtn" onClick={onClose}><Icon name="x"/></button>
+        </div>
+        <div className="modal-section">
+          <label>当日计划（可多条）</label>
+          <div className="ev-list">
+            {items.map((ev,idx)=>(
+              <div key={ev.id} className={`ev-row p${ev.priority||3} ${activeIdx===idx?'is-active':''} ${ev.done?'done':''}`}
+                onClick={()=>setActiveIdx(idx)}>
+                <button className="ev-check" onClick={e=>{e.stopPropagation();setItems(arr=>arr.map((x,i)=>i===idx?{...x,done:!x.done}:x));}}>
+                  {ev.done?<Icon name="check" size={11}/>:null}
+                </button>
+                <span className="ev-bar"/>
+                <input className="ev-input" placeholder={`计划 ${idx+1}…`} value={ev.text}
+                  onClick={e=>e.stopPropagation()} onFocus={()=>setActiveIdx(idx)}
+                  onChange={e=>setItems(arr=>arr.map((x,i)=>i===idx?{...x,text:e.target.value}:x))}/>
+                <span className="ev-prio">
+                  {PRIORITIES.map(p=>(
+                    <button key={p.id} className={`evp p${p.id} ${ev.priority===p.id?'is-on':''}`} title={`${p.label}优先级`}
+                      onClick={e=>{e.stopPropagation();setItems(arr=>arr.map((x,i)=>i===idx?{...x,priority:p.id}:x));}}>
+                      {p.short}
+                    </button>
+                  ))}
+                </span>
+                {(ev.stickers||[]).length>0&&(
+                  <span className="ev-sticks">
+                    {ev.stickers.slice(0,3).map((tk,si)=><span key={si}>{renderSticker(tk,14)}</span>)}
+                    {ev.stickers.length>3&&<span className="cs more">+{ev.stickers.length-3}</span>}
+                  </span>
+                )}
+                <button className="ev-del" onClick={e=>{e.stopPropagation();removeItem(idx);}} title="删除"><Icon name="x" size={12}/></button>
+              </div>
+            ))}
+          </div>
+          <button className="btn small" onClick={addItem}><Icon name="plus" size={12}/> 添加一条</button>
+        </div>
+        <div className="modal-section">
+          <label>· 选中条编辑：颜色标签</label>
+          <div className="color-row">
+            {colors.map(c=>(
+              <button key={c||'none'} className={`col-dot ${cur.color===c?'is-on':''}`}
+                style={{background:c||'transparent',border:c?'':'2px dashed var(--line)'}}
+                onClick={()=>setCur({color:c})}>
+                {!c&&<span style={{fontSize:11,color:'var(--ink-3)'}}>无</span>}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="modal-section">
+          <label>当日心情</label>
+          <div className="modal-mood">
+            {STICKERS.mood.items.map(m=>(
+              <button key={m.id} className={`mm-pick ${mood===m.id?'is-on':''}`} style={{'--tone':m.tone}}
+                onClick={()=>onMood(mood===m.id?null:m.id)}>
+                <span style={{fontSize:18}}>{m.emoji}</span><span>{m.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="modal-section">
+          <label>· 选中条编辑：贴纸</label>
+          {!!(cur.stickers||[]).length&&(
+            <div className="modal-stickers">
+              {cur.stickers.map((tk,i)=>(
+                <button key={i} className="ms-chip" onClick={()=>removeSticker(i)} title="点击移除">{renderSticker(tk,18)}</button>
+              ))}
+            </div>
+          )}
+          <div className="seg">
+            {[['emoji','😊 Emoji'],['svg','✦ 卡通']].map(([k,nm])=>(
+              <button key={k} className={`seg-btn ${pickerTab===k?'is-active':''}`} onClick={()=>setPickerTab(k)}>{nm}</button>
+            ))}
+          </div>
+          <div className="modal-stickbox">
+            {pickerTab==='emoji'&&STICKERS.emoji.items.map(e=><button key={e} className="stick-cell" onClick={()=>addSticker(e)}>{e}</button>)}
+            {pickerTab==='svg'&&SvgStickers.map(s=><button key={s.id} className="stick-cell" onClick={()=>addSticker({svg:s.id})}>{s.render(26)}</button>)}
+          </div>
+        </div>
+        <div className="modal-foot">
+          <div style={{flex:1,fontSize:12,color:'var(--ink-3)'}}>共 {items.length} 条 · 点击行选中后编辑</div>
+          <button className="btn" onClick={()=>onSave([])}>清空当日</button>
+          <button className="btn primary" onClick={()=>{onSave(items.filter(e=>e.text||(e.stickers||[]).length||e.color));onClose();}}>保存</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+// ═══════════════════════════════════════════════════════════════
+// GanttView  (修改1:今天柔和高亮  修改4:优先级  修改6:近3天DDL)
+// ═══════════════════════════════════════════════════════════════
+function GanttView({ store }){
+  const { state, addTask, updateTask, removeTask, addCategory, updateCategory, removeCategory } = store;
+  const { year } = state;
+
+  const todayMonth = new Date().getMonth();
+  const defaultMonths = todayMonth < 6 ? [0,1,2,3,4,5] : [6,7,8,9,10,11];
+  const [activeMonths, setActiveMonths] = React.useState(defaultMonths);
+  const [activeCats, setActiveCats] = React.useState(()=>state.categories.map(c=>c.id));
+  const [editingCat, setEditingCat] = React.useState(null);
+  const [editingTask, setEditingTask] = React.useState(null);
+  const trackWrapRef = React.useRef(null);
+
+  React.useEffect(()=>{
+    setActiveCats(prev=>{
+      const valid=state.categories.map(c=>c.id);
+      return[...prev.filter(id=>valid.includes(id)),...valid.filter(id=>!prev.includes(id))];
+    });
+  },[state.categories.length]);
+
+  const toggleMonth=m=>setActiveMonths(s=>s.includes(m)?s.filter(x=>x!==m):[...s,m].sort((a,b)=>a-b));
+  const toggleCat=id=>setActiveCats(s=>s.includes(id)?s.filter(x=>x!==id):[...s,id]);
+
+  const monthsSorted=activeMonths.length?[...activeMonths].sort((a,b)=>a-b):[todayMonth];
+  const startMonth=monthsSorted[0];
+  const endMonth=monthsSorted[monthsSorted.length-1];
+  const startDate=new Date(year,startMonth,1);
+  const endDate=new Date(year,endMonth+1,0);
+  const totalDays=Math.round((endDate-startDate)/86400000)+1;
+
+  const filtered=state.tasks.filter(t=>activeCats.includes(t.categoryId)&&taskOverlapsRange(t,startDate,endDate));
+  const grouped=state.categories.filter(c=>activeCats.includes(c.id)).map(c=>({
+    cat:c,
+    ranges:filtered.filter(t=>t.categoryId===c.id&&t.type!=='point'),
+    points:filtered.filter(t=>t.categoryId===c.id&&t.type==='point')
+  }));
+
+  const dayWidth=26,rowHeight=44,headerHeight=64,trackWidth=totalDays*dayWidth;
+
+  React.useEffect(()=>{
+    const wrap=trackWrapRef.current;if(!wrap)return;
+    const t=new Date();t.setHours(0,0,0,0);
+    const idx=Math.round((t-startDate)/86400000);
+    if(idx<0||idx>=totalDays){wrap.scrollLeft=0;return;}
+    wrap.scrollLeft=Math.max(0,idx*dayWidth-wrap.clientWidth/2+dayWidth/2);
+  },[year,monthsSorted.join(',')]);
+
+  const scrollToToday=()=>{
+    const wrap=trackWrapRef.current;if(!wrap)return;
+    const t=new Date();t.setHours(0,0,0,0);
+    const idx=Math.round((t-startDate)/86400000);
+    if(idx<0||idx>=totalDays){setActiveMonths(prev=>prev.includes(t.getMonth())?prev:[...prev,t.getMonth()].sort((a,b)=>a-b));return;}
+    wrap.scrollTo({left:Math.max(0,idx*dayWidth-wrap.clientWidth/2+dayWidth/2),behavior:'smooth'});
+  };
+
+  // ── 修改6: 近3天DDL ──
+  const now=new Date();now.setHours(0,0,0,0);
+  const soonDDls=state.tasks.filter(t=>{
+    if(t.type!=='point')return false;
+    const d=parseYmd(t.start);
+    const diff=Math.round((d-now)/86400000);
+    return diff>=0&&diff<=3;
+  }).sort((a,b)=>parseYmd(a.start)-parseYmd(b.start));
+
+  return (
+    <div className="gantt-page">
+      {/* 修改6: 近3天DDL提醒 */}
+      {soonDDls.length>0&&(
+        <div className="ddl-alert-bar">
+          <span className="ddl-alert-label">⏰ 近3天DDL：</span>
+          {soonDDls.map(t=>{
+            const cat=state.categories.find(c=>c.id===t.categoryId);
+            const prio=PRIORITIES.find(p=>p.id===(t.priority||2))||PRIORITIES[1];
+            const d=parseYmd(t.start);
+            const diff=Math.round((d-now)/86400000);
+            const dayLabel=diff===0?'今天':diff===1?'明天':diff===2?'后天':`第${diff}天`;
+            return(
+              <span key={t.id} className="ddl-chip" style={{borderColor:`color-mix(in oklab,${prio.color} 50%,var(--line))`}}>
+                <span className="ddl-chip-prio" style={{background:prio.color}}/>
+                {cat?.emoji||''} {t.title}
+                <span className="ddl-chip-time">{dayLabel} ({String(d.getMonth()+1).padStart(2,'0')}/{String(d.getDate()).padStart(2,'0')})</span>
+              </span>
+            );
+          })}
+        </div>
+      )}
+
+      <div className="gantt-tools">
+        <div className="gt-block">
+          <div className="gt-label"><Icon name="filter" size={13}/> 月份（多选）</div>
+          <div className="month-chips">
+            <button className="mini-btn" onClick={()=>setActiveMonths([0,1,2,3,4,5,6,7,8,9,10,11])}>全选</button>
+            <button className="mini-btn" onClick={()=>setActiveMonths([])}>清空</button>
+            <button className="mini-btn" onClick={()=>setActiveMonths([0,1,2,3,4,5])}>上半年</button>
+            <button className="mini-btn" onClick={()=>setActiveMonths([6,7,8,9,10,11])}>下半年</button>
+            <span className="sep"/>
+            {MONTH_NAMES_CN.map((nm,i)=>(
+              <button key={i} className={`mchip ${activeMonths.includes(i)?'is-on':''}`}
+                style={{'--mc':`var(--m${i+1})`,'--mcd':`var(--m${i+1}d)`}}
+                onClick={()=>toggleMonth(i)}>
+                <span className="mchip-dot"/>{nm}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="gt-block">
+          <div className="gt-label"><Icon name="tag" size={13}/> 分类</div>
+          <div className="cat-chips">
+            {state.categories.map(c=>(
+              <div key={c.id} className={`catchip ${activeCats.includes(c.id)?'is-on':''}`} style={{'--cc':c.color}}>
+                <button className="catchip-main" onClick={()=>toggleCat(c.id)}>
+                  <span className="cc-dot" style={{background:c.color}}/>
+                  <span>{c.emoji}</span><span>{c.name}</span>
+                </button>
+                <button className="catchip-edit" onClick={()=>setEditingCat(c)}><Icon name="edit" size={12}/></button>
+              </div>
+            ))}
+            <button className="catchip add" onClick={()=>setEditingCat({id:'',name:'',color:'#9dc7ff',emoji:'✨'})}>
+              <Icon name="plus" size={13}/> 新建分类
+            </button>
+          </div>
+        </div>
+        <div className="gt-block right">
+          <div style={{display:'flex',gap:8}}>
+            <button className="btn" onClick={scrollToToday}><Icon name="today"/> 今天</button>
+            <button className="btn primary" onClick={()=>{
+              const cid=state.categories[0]?.id||'misc';
+              const newT={id:uid('t'),type:'range',title:'新任务',categoryId:cid,priority:2,
+                start:ymd(new Date(year,startMonth,1)),end:ymd(new Date(year,startMonth,7)),progress:0};
+              addTask(newT);setEditingTask(newT);
+            }}><Icon name="plus"/> 任务条</button>
+            <button className="btn primary" onClick={()=>{
+              const cid=state.categories[0]?.id||'misc';
+              const today=ymd(new Date());
+              const inRange=parseYmd(today)>=startDate&&parseYmd(today)<=endDate;
+              const day=inRange?today:ymd(new Date(year,startMonth,15));
+              const newT={id:uid('t'),type:'point',title:'新 DDL',categoryId:cid,priority:1,start:day,end:day};
+              addTask(newT);setEditingTask(newT);
+            }}><Icon name="plus"/> 时间点</button>
+          </div>
+        </div>
+      </div>
+
+      <div className="gantt-frame">
+        <div className="gantt-side">
+          <div className="gs-head">分类 / 任务</div>
+          {grouped.map(({cat,ranges,points})=>(
+            <div key={cat.id} className="gs-group">
+              <div className="gs-cat" style={{'--cc':cat.color}}>
+                <span className="cc-dot" style={{background:cat.color}}/>
+                <span className="ce">{cat.emoji}</span>
+                <strong>{cat.name}</strong>
+                <span className="ct-count">{ranges.length+points.length}</span>
+              </div>
+              {ranges.map(t=>{
+                const prio=PRIORITIES.find(p=>p.id===(t.priority||2))||PRIORITIES[1];
+                return(
+                  <div key={t.id} className="gs-task" onClick={()=>setEditingTask(t)}>
+                    <span className="gst-bar" style={{background:cat.color}}/>
+                    <span className="gst-prio" style={{background:prio.color}}/>
+                    <span className="gst-title">{t.title}</span>
+                    <span className="gst-prog">{t.progress||0}%</span>
+                  </div>
+                );
+              })}
+              {points.map(t=>{
+                const prio=PRIORITIES.find(p=>p.id===(t.priority||2))||PRIORITIES[1];
+                return(
+                  <div key={t.id} className="gs-task is-point" onClick={()=>setEditingTask(t)}>
+                    <span className="gst-flag" style={{color:cat.color}}>⚑</span>
+                    <span className="gst-prio" style={{background:prio.color}}/>
+                    <span className="gst-title">{t.title}</span>
+                    <span className="gst-prog">{t.start.slice(5)}</span>
+                  </div>
+                );
+              })}
+              {!ranges.length&&!points.length&&<div className="gs-empty">— 无 —</div>}
+            </div>
+          ))}
+          {!grouped.length&&<div className="gs-empty" style={{padding:'28px 14px'}}>请先选择月份或分类～</div>}
+        </div>
+
+        <div className="gantt-track-wrap" ref={trackWrapRef}>
+          <div className="gantt-track" style={{width:trackWidth}}>
+            <GanttHeader year={year} months={monthsSorted} startDate={startDate} totalDays={totalDays} dayWidth={dayWidth}/>
+            <div className="track-body" style={{paddingTop:headerHeight}}>
+              {grouped.map(({cat,ranges,points})=>(
+                <div key={cat.id} className="track-group">
+                  <div className="track-grouprow" style={{height:rowHeight}}>
+                    {monthsSorted.map(m=>(
+                      <div key={m} className="track-monthcell"
+                        style={{left:monthOffsetDays(year,m,startDate)*dayWidth,width:daysInMonth(year,m)*dayWidth,
+                          background:`color-mix(in oklab,var(--m${m+1}) 35%,var(--paper))`}}/>
+                    ))}
+                  </div>
+                  {ranges.map(t=>{
+                    const ts=parseYmd(t.start),te=parseYmd(t.end);
+                    const left=clamp(Math.round((ts-startDate)/86400000),0,totalDays-1)*dayWidth;
+                    const len=(Math.round((te-ts)/86400000)+1)*dayWidth;
+                    const pillW=Math.max(len-4,18);
+                    return(
+                      <div key={t.id} className="track-row" style={{height:rowHeight}}>
+                        {monthsSorted.map(m=>(
+                          <div key={m} className="track-monthbg"
+                            style={{left:monthOffsetDays(year,m,startDate)*dayWidth,width:daysInMonth(year,m)*dayWidth}}/>
+                        ))}
+                        <WeekendStripes startDate={startDate} totalDays={totalDays} dayWidth={dayWidth}/>
+                        <TodayHighlight startDate={startDate} totalDays={totalDays} dayWidth={dayWidth}/>
+                        <button className={`task-bar p${t.priority||3}`}
+                          style={{left:left+2,width:pillW,'--cc':cat.color}}
+                          onClick={()=>setEditingTask(t)}>
+                          <span className="tb-fill" style={{width:`${t.progress||0}%`}}/>
+                          <span className="tb-label">{cat.emoji} {t.title}</span>
+                          <span className="tb-prog">{t.progress||0}%</span>
+                        </button>
+                      </div>
+                    );
+                  })}
+                  {points.map(t=>{
+                    const ts=parseYmd(t.start);
+                    const left=clamp(Math.round((ts-startDate)/86400000),0,totalDays-1)*dayWidth;
+                    return(
+                      <div key={t.id} className="track-row" style={{height:rowHeight}}>
+                        {monthsSorted.map(m=>(
+                          <div key={m} className="track-monthbg"
+                            style={{left:monthOffsetDays(year,m,startDate)*dayWidth,width:daysInMonth(year,m)*dayWidth}}/>
+                        ))}
+                        <WeekendStripes startDate={startDate} totalDays={totalDays} dayWidth={dayWidth}/>
+                        <TodayHighlight startDate={startDate} totalDays={totalDays} dayWidth={dayWidth}/>
+                        <button className="point-mark" style={{left:left+dayWidth/2,'--cc':cat.color}} onClick={()=>setEditingTask(t)}>
+                          <span className="pm-flag">⚑</span>
+                          <span className="pm-label">{t.title}</span>
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {editingCat&&(
+        <CatEditor cat={editingCat}
+          onClose={()=>setEditingCat(null)}
+          onSave={c=>{if(!c.id)addCategory({...c,id:uid('cat')});else updateCategory(c.id,c);setEditingCat(null);}}
+          onDelete={()=>{if(editingCat.id)removeCategory(editingCat.id);setEditingCat(null);}}/>
+      )}
+      {editingTask&&(
+        <TaskEditor task={editingTask} categories={state.categories}
+          onClose={()=>setEditingTask(null)}
+          onSave={t=>{updateTask(t.id,t);setEditingTask(null);}}
+          onDelete={()=>{removeTask(editingTask.id);setEditingTask(null);}}/>
+      )}
+    </div>
+  );
+}
+
+function GanttHeader({ year, months, startDate, totalDays, dayWidth }){
+  return (
+    <div className="track-header">
+      <div className="th-months">
+        {months.map(m=>(
+          <div key={m} className="th-month"
+            style={{left:monthOffsetDays(year,m,startDate)*dayWidth,width:daysInMonth(year,m)*dayWidth,
+              '--mc':`var(--m${m+1})`,'--mcd':`var(--m${m+1}d)`}}>
+            <span className="thm-en">{MONTH_NAMES_EN[m]}</span>
+            <span className="thm-cn">{MONTH_NAMES_CN[m]}</span>
+          </div>
+        ))}
+      </div>
+      <div className="th-days">
+        {Array.from({length:totalDays}).map((_,i)=>{
+          const d=new Date(startDate.getTime()+i*86400000);
+          const isWk=d.getDay()===0||d.getDay()===6;
+          const isTd=isToday(d.getFullYear(),d.getMonth(),d.getDate());
+          return(
+            <div key={i} className={`th-day ${isWk?'wk':''} ${isTd?'is-today':''}`} style={{width:dayWidth,left:i*dayWidth}}>
+              <span>{d.getDate()}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function WeekendStripes({ startDate, totalDays, dayWidth }){
+  const items=[];
+  for(let i=0;i<totalDays;i++){
+    const d=new Date(startDate.getTime()+i*86400000);
+    if(d.getDay()===0||d.getDay()===6) items.push(<div key={i} className="wknd" style={{left:i*dayWidth,width:dayWidth}}/>);
+  }
+  return <>{items}</>;
+}
+
+// 修改1: 今天用同色系柔和列高亮，不再用红线
+function TodayHighlight({ startDate, totalDays, dayWidth }){
+  const t=new Date();t.setHours(0,0,0,0);
+  const idx=Math.round((t-startDate)/86400000);
+  if(idx<0||idx>=totalDays)return null;
+  return <div className="today-col" style={{left:idx*dayWidth,width:dayWidth}}/>;
+}
+
+function monthOffsetDays(year,m,startDate){return Math.round((new Date(year,m,1)-startDate)/86400000);}
+function taskOverlapsRange(t,start,end){const ts=parseYmd(t.start),te=parseYmd(t.end||t.start);return!(te<start||ts>end);}
+
+function CatEditor({ cat, onClose, onSave, onDelete }){
+  const [name,setName]=React.useState(cat.name);
+  const [color,setColor]=React.useState(cat.color);
+  const [emoji,setEmoji]=React.useState(cat.emoji);
+  const palette=['#ff9bbc','#ffce6e','#a8e1c5','#9dc7ff','#cdb6ff','#ffae7a','#ff8b8b','#a8d99b','#9bb8ff','#f0a8ff'];
+  const emojis=['📝','💼','📮','📚','🌿','🎯','🎓','💪','🍀','✨','🎨','🍰','☕️','💌','🔥','🌈','🛒','🏠'];
+  return(
+    <div className="modal-bg" onClick={onClose}>
+      <div className="modal sm" onClick={e=>e.stopPropagation()}>
+        <div className="modal-h"><strong>{cat.id?'编辑分类':'新建分类'}</strong><button className="iconbtn" onClick={onClose}><Icon name="x"/></button></div>
+        <div className="modal-section"><label>名称</label><input className="modal-title-input small" value={name} onChange={e=>setName(e.target.value)}/></div>
+        <div className="modal-section"><label>颜色</label><div className="color-row">{palette.map(c=><button key={c} className={`col-dot ${color===c?'is-on':''}`} style={{background:c}} onClick={()=>setColor(c)}/>)}</div></div>
+        <div className="modal-section"><label>图标</label><div className="emoji-row">{emojis.map(e=><button key={e} className={`em-pick ${emoji===e?'is-on':''}`} onClick={()=>setEmoji(e)}>{e}</button>)}</div></div>
+        <div className="modal-foot">
+          {cat.id&&<button className="btn danger" onClick={onDelete}><Icon name="trash"/> 删除</button>}
+          <div style={{flex:1}}/>
+          <button className="btn" onClick={onClose}>取消</button>
+          <button className="btn primary" onClick={()=>onSave({...cat,name,color,emoji})}>保存</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// 修改4: 任务编辑器增加优先级选择
+function TaskEditor({ task, categories, onClose, onSave, onDelete }){
+  const [t,setT]=React.useState({...task});
+  const set=(k,v)=>setT(s=>({...s,[k]:v}));
+  const isPoint=t.type==='point';
+  return(
+    <div className="modal-bg" onClick={onClose}>
+      <div className="modal sm" onClick={e=>e.stopPropagation()}>
+        <div className="modal-h">
+          <strong>{isPoint?'编辑时间点 / DDL':'编辑任务条'}</strong>
+          <button className="iconbtn" onClick={onClose}><Icon name="x"/></button>
+        </div>
+        <input className="modal-title-input" placeholder={isPoint?'DDL 名称':'任务名称'}
+          value={t.title} onChange={e=>set('title',e.target.value)} autoFocus/>
+        <div className="modal-section">
+          <label>类型</label>
+          <div className="seg" style={{maxWidth:240}}>
+            <button className={`seg-btn ${!isPoint?'is-active':''}`} onClick={()=>set('type','range')}>━ 任务条</button>
+            <button className={`seg-btn ${isPoint?'is-active':''}`} onClick={()=>{set('type','point');set('end',t.start);}}>⚑ 时间点</button>
+          </div>
+        </div>
+        <div className="modal-section">
+          <label>分类</label>
+          <div className="cat-pickrow">
+            {categories.map(c=>(
+              <button key={c.id} className={`cat-pick ${t.categoryId===c.id?'is-on':''}`}
+                style={{'--cc':c.color}} onClick={()=>set('categoryId',c.id)}>
+                <span className="cc-dot" style={{background:c.color}}/>{c.emoji} {c.name}
+              </button>
+            ))}
+          </div>
+        </div>
+        {/* 修改4: 优先级 */}
+        <div className="modal-section">
+          <label>优先级</label>
+          <div style={{display:'flex',gap:8}}>
+            {PRIORITIES.map(p=>(
+              <button key={p.id}
+                className={`btn ${t.priority===p.id?'primary':''}`}
+                style={t.priority===p.id?{background:p.color,borderColor:p.color}:{}}
+                onClick={()=>set('priority',p.id)}>
+                <span style={{width:8,height:8,borderRadius:'50%',background:p.color,display:'inline-block'}}/>
+                {p.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        {isPoint?(
+          <div className="modal-section">
+            <label>日期</label>
+            <input className="modal-title-input small" type="date" value={t.start}
+              onChange={e=>{set('start',e.target.value);set('end',e.target.value);}}/>
+          </div>
+        ):(
+          <>
+            <div className="modal-section row2">
+              <div><label>开始</label><input className="modal-title-input small" type="date" value={t.start} onChange={e=>set('start',e.target.value)}/></div>
+              <div><label>结束</label><input className="modal-title-input small" type="date" value={t.end} onChange={e=>set('end',e.target.value)}/></div>
+            </div>
+            <div className="modal-section">
+              <label>进度 {t.progress||0}%</label>
+              <input type="range" min="0" max="100" step="5" value={t.progress||0}
+                onChange={e=>set('progress',Number(e.target.value))} className="prog-slider"/>
+            </div>
+          </>
+        )}
+        <div className="modal-foot">
+          <button className="btn danger" onClick={onDelete}><Icon name="trash"/> 删除</button>
+          <div style={{flex:1}}/>
+          <button className="btn" onClick={onClose}>取消</button>
+          <button className="btn primary" onClick={()=>onSave(t)}>保存</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+// App
+// ═══════════════════════════════════════════════════════════════
+function App(){
+  const store=useStore();
+  const [tab,setTab]=React.useState('cal');
+  const [t,setTweak]=useTweaks(window.__TWEAK_DEFAULTS);
+
+  React.useEffect(()=>{
+    const root=document.documentElement;
+    root.dataset.theme=t.dark?'dark':'light';
+    root.dataset.font=t.fontFamily||'rounded';
+    root.dataset.density=t.cuteDensity||'medium';
+  },[t.dark,t.fontFamily,t.cuteDensity]);
+
+  const exportJson=()=>{
+    const blob=new Blob([JSON.stringify(store.state,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download=`planner-${store.state.year}.json`;a.click();
+    URL.revokeObjectURL(url);
+  };
+
+const importJson=()=>{
+  const input=document.createElement('input');
+  input.type='file';input.accept='.json';
+  input.onchange=e=>{
+    const file=e.target.files[0];if(!file)return;
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      try{
+        const data=JSON.parse(ev.target.result);
+        if(!data||typeof data!=='object'){alert('文件格式不正确');return;}
+        const merged={...DEFAULT_STATE,...data,
+          events:data.events||{},
+          mood:data.mood||{},
+          monthNotes:data.monthNotes||{},
+          tasks:Array.isArray(data.tasks)?data.tasks:[],
+          categories:Array.isArray(data.categories)&&data.categories.length?data.categories:DEFAULT_CATEGORIES.slice()
+        };
+        localStorage.setItem(STORE_KEY,JSON.stringify(merged));
+        location.reload();
+      }catch(err){alert('导入失败：JSON 解析错误');}
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+};
+
+  return(
+    <div id="root-app">
+      <header className="topbar no-print">
+        <div className="brand"><span className="dot"/>无敌小猪猪 <small>の日程笔记</small></div>
+        <div className="tabs">
+          <button className={`tab ${tab==='cal'?'is-active':''}`} onClick={()=>setTab('cal')}><Icon name="cal"/> 月历</button>
+          <button className={`tab ${tab==='gantt'?'is-active':''}`} onClick={()=>setTab('gantt')}><Icon name="gantt"/> 甘特图</button>
+        </div>
+        <div className="grow"/>
+        <button className="iconbtn" title="导出 JSON" onClick={exportJson}><Icon name="dl"/></button>
+        <button className="iconbtn" title="导入 JSON" onClick={importJson}><Icon name="plus"/></button>
+        <button className="iconbtn" title="打印" onClick={()=>window.print()}><Icon name="print"/></button>
+        <button className="iconbtn" title="深浅切换" onClick={()=>setTweak('dark',!t.dark)}>
+          <Icon name={t.dark?'sun':'moon'}/>
+        </button>
+      </header>
+
+      {tab==='cal'?<CalendarView store={store} density={t.cuteDensity}/>:<GanttView store={store}/>}
+
+      <TweaksPanel>
+        <TweakSection label="主题 Theme"/>
+        <TweakToggle label="深色模式" value={t.dark} onChange={v=>setTweak('dark',v)}/>
+        <TweakRadio label="字体" value={t.fontFamily}
+          options={[{value:'rounded',label:'圆体'},{value:'hand',label:'手写'},{value:'sans',label:'无衬线'}]}
+          onChange={v=>setTweak('fontFamily',v)}/>
+        <TweakRadio label="卡通密度" value={t.cuteDensity}
+          options={[{value:'low',label:'少'},{value:'medium',label:'适中'},{value:'high',label:'丰富'}]}
+          onChange={v=>setTweak('cuteDensity',v)}/>
+        <TweakSection label="数据 Data"/>
+        <TweakButton label="导出 JSON" onClick={exportJson}/>
+        <TweakButton label="导入 JSON" onClick={importJson} secondary/>
+        <TweakButton label="重置全部" onClick={()=>{if(confirm('确定重置所有数据？此操作不可撤销')){localStorage.removeItem('planner_v2');location.reload();}}}/>
+      </TweaksPanel>
+
+      <BgDecos density={t.cuteDensity}/>
+    </div>
+  );
+}
+
+function BgDecos({ density }){
+  if(density==='low')return null;
+  const items=density==='high'
+    ?[{kind:'cloud',size:120,x:'4%',y:'12%',color:'var(--m4d)',op:.18,rot:-8},
+      {kind:'sparkle',size:48,x:'94%',y:'18%',color:'var(--m7d)',op:.35,rot:0},
+      {kind:'star',size:38,x:'88%',y:'42%',color:'var(--m1d)',op:.35,rot:14},
+      {kind:'flower',size:64,x:'2%',y:'74%',color:'var(--m2d)',op:.22,rot:-12},
+      {kind:'leaf',size:80,x:'95%',y:'78%',color:'var(--m3d)',op:.20,rot:24},
+      {kind:'heart',size:38,x:'10%',y:'46%',color:'var(--m8d)',op:.25,rot:-18}]
+    :[{kind:'cloud',size:90,x:'5%',y:'14%',color:'var(--m4d)',op:.16,rot:-6},
+      {kind:'star',size:34,x:'92%',y:'22%',color:'var(--m1d)',op:.30,rot:10},
+      {kind:'flower',size:56,x:'94%',y:'82%',color:'var(--m2d)',op:.20,rot:-10}];
+  return(
+    <div className="bg-decos" aria-hidden>
+      {items.map((it,i)=>(
+        <div key={i} className="bg-deco" style={{left:it.x,top:it.y,opacity:it.op,transform:`rotate(${it.rot}deg)`}}>
+          <Deco kind={it.kind} size={it.size} color={it.color}/>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+</script>
+</body>
+</html>
