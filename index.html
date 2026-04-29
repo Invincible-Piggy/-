@@ -202,7 +202,306 @@ button{font:inherit;color:inherit}
 .tab,.pill,.mini-btn,.btn,.iconbtn,.catchip-main,.catchip.add,.mchip,.seg-btn,.col-dot,.em-pick,.mm-pick,.mood-pick,.cat-pick,.ev-input,.gs-cat strong,.gst-title,.gst-prog,.evp,.ev-del,.ev-check,.modal-h strong,.card-h strong,.whead,.th-month,.th-day,.gt-label,.pm-label,.ddl-alert-label,.ddl-chip{white-space:nowrap}
 .tab>*,.pill>*,.btn>*,.catchip-main>*,.mini-btn>*,.mchip>*,.seg-btn>*,.mm-pick>*,.cat-pick>*{white-space:nowrap}
 .gs-cat strong{overflow:hidden;text-overflow:ellipsis;min-width:0}
-@media print{.topbar,.monthstrip,.twk-panel,.no-print{display:none!important}body{background:white}}
+/* ── 手机适配 ── */
+@media (max-width: 768px) {
+  .topbar {
+    padding: 10px 12px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-size: 15px;
+  }
+  .brand small {
+    font-size: 14px;
+    display: none;
+  }
+  .tabs {
+    order: 10;
+    width: 100%;
+    justify-content: center;
+  }
+  .tab {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  .iconbtn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .monthstrip {
+    padding: 10px 12px 0;
+    gap: 4px;
+  }
+  .pill {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .cal-page {
+    padding: 0 10px 40px;
+  }
+  .cal-header {
+    padding: 12px 0 10px;
+    gap: 12px;
+  }
+  .cal-yr .yr-num {
+    font-size: 32px;
+  }
+  .cal-yr .yr-cn {
+    font-size: 14px;
+  }
+  .cal-month {
+    padding: 8px 14px 10px;
+    border-radius: 14px;
+  }
+  .cal-month .m-en {
+    font-size: 26px;
+  }
+  .cal-month .m-cn {
+    font-size: 16px;
+  }
+  .cal-meta {
+    font-size: 11px;
+    width: 100%;
+    flex-direction: row;
+    gap: 12px;
+  }
+  .cal-actions {
+    width: 100%;
+    justify-content: center;
+    gap: 6px;
+  }
+  .cal-actions .btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .cal-main {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .cal-grid {
+    border-radius: 16px;
+  }
+  .cal-grid::before {
+    height: 4px;
+  }
+  .cal-week-head {
+    font-size: 11px;
+  }
+  .whead {
+    padding: 8px 4px;
+    font-size: 11px;
+    gap: 2px;
+    justify-content: center;
+  }
+  .whead .whead-cn {
+    display: none;
+  }
+  .cal-cells {
+    grid-auto-rows: minmax(72px, 1fr);
+  }
+  .density-low .cal-cells {
+    grid-auto-rows: 64px;
+  }
+  .density-high .cal-cells {
+    grid-auto-rows: 80px;
+  }
+  .cell {
+    padding: 4px 5px 6px;
+    gap: 3px;
+  }
+  .cell .d {
+    font-size: 14px;
+  }
+  .lunar-d {
+    font-size: 9px;
+  }
+  .cell-top {
+    gap: 3px;
+  }
+  .prio-mark {
+    width: 14px;
+    height: 14px;
+    font-size: 9px;
+  }
+  .mood-emoji {
+    font-size: 13px;
+  }
+  .evi {
+    font-size: 10px;
+    gap: 3px;
+  }
+  .evi-bar {
+    width: 2px;
+    height: 9px;
+  }
+  .evi-chk {
+    width: 12px;
+    height: 12px;
+    font-size: 7px;
+  }
+  .evi-more {
+    font-size: 9px;
+  }
+  .cell-stickers {
+    gap: 2px;
+  }
+
+  .cal-side {
+    gap: 10px;
+  }
+  .card {
+    border-radius: 14px;
+    padding: 12px;
+  }
+  .card-h strong {
+    font-size: 13px;
+  }
+  .stick-grid {
+    gap: 3px;
+  }
+  .stick-cell {
+    font-size: 15px;
+  }
+  .mood-card .mood-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .mood-pick {
+    padding: 6px 2px;
+    font-size: 10px;
+    border-radius: 10px;
+  }
+  .mood-pick .me {
+    font-size: 16px;
+  }
+  .note-card .note-area {
+    min-height: 100px;
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+
+  /* 弹窗全屏 */
+  .modal-bg {
+    padding: 0;
+    align-items: flex-end;
+  }
+  .modal {
+    width: 100%;
+    max-height: 92vh;
+    border-radius: 22px 22px 0 0;
+    padding: 14px;
+    animation: slideUp .25s ease-out;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal-h strong {
+    font-size: 16px;
+  }
+  .modal-date .md-d {
+    font-size: 24px;
+  }
+  .modal-title-input {
+    font-size: 18px;
+  }
+  .modal-stickbox {
+    grid-template-columns: repeat(6, 1fr);
+    max-height: 200px;
+  }
+  .ev-row {
+    padding: 6px;
+    gap: 4px;
+  }
+  .ev-input {
+    font-size: 13px;
+  }
+  .evp {
+    width: 28px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  /* 甘特图 */
+  .gantt-page {
+    padding: 4px 10px 40px;
+  }
+  .gantt-tools {
+    padding: 10px;
+    gap: 10px;
+    margin: 8px 0 12px;
+    border-radius: 14px;
+  }
+  .gt-label {
+    font-size: 10px;
+  }
+  .mchip {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  .catchip-main {
+    font-size: 12px;
+    padding: 4px 4px 4px 8px;
+  }
+  .catchip-edit {
+    width: 20px;
+    height: 20px;
+  }
+  .mini-btn {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+  .gantt-frame {
+    grid-template-columns: 180px 1fr;
+    border-radius: 16px;
+  }
+  .gantt-side {
+    max-height: calc(100vh - 280px);
+  }
+  .gs-head {
+    height: 48px;
+    font-size: 12px;
+    padding: 0 10px;
+  }
+  .gs-cat {
+    height: 36px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+  .gs-task {
+    height: 36px;
+    padding: 0 10px 0 18px;
+    font-size: 12px;
+  }
+  .gantt-track-wrap {
+    max-height: calc(100vh - 280px);
+  }
+
+  .ddl-alert-bar {
+    padding: 8px 10px;
+    font-size: 12px;
+    gap: 6px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+  .ddl-chip {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+
+  /* 设置面板 */
+  .twk-panel {
+    width: calc(100% - 32px);
+    max-width: 320px;
+  }
+}
+
+  @media print{.topbar,.monthstrip,.twk-panel,.no-print{display:none!important}body{background:white}}
 </style>
 </head>
 <body>
