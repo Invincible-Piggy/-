@@ -1,0 +1,22 @@
+{
+  "name": "2026 日历日程表",
+  "short_name": "日程表",
+  "description": "月历 + 甘特图 + 心情打卡的可爱日程规划工具",
+  "start_url": "./日历日程表.html",
+  "display": "standalone",
+  "background_color": "#faf8f5",
+  "theme_color": "#faf8f5",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
