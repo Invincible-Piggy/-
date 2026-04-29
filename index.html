@@ -1193,5 +1193,12 @@ function BgDecos({ density }){
 
 ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
 </script>
+
+ <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+</script>
+  
 </body>
 </html>
